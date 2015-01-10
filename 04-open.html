@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: Version Control with Git</title>
+    <title>Software Carpentry: Introdução ao Controle de Versão com Git</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,59 +25,60 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title">Version Control with Git</h1>
-          <h2 class="subtitle">Open Science</h2>
-<div id="learning-objectives" class="objectives objectives">
-<h2 id="learning-objectives" class="objectives objectives">Learning Objectives</h2>
+          <h1 class="title">Introdução ao Controle de Versão com Git</h1>
+          <h2 class="subtitle">Ciência Aberta</h2>
+<div id="objetivo" class="objectives">
+<h2>Objetivo</h2>
 <ul>
-<li>Explain how the GNU General Public License (GPL) differs from most other open licenses.</li>
-<li>Explain the four kinds of restrictions that can be combined in a Creative Commons license.</li>
-<li>Correctly add licensing and citation information to a project repository.</li>
-<li>Outline options for hosting code and data and the pros and cons of each.</li>
+<li>Explicar como a Licença Pública Geral (GPL) GNU difere das outras populares licenças de código aberto.</li>
+<li>Explicar como os quatro tipos de restrições podem ser combinados nas licenças Creative Commons.</li>
+<li>Como adicionar corretamente informações de licença e citação no seu projeto.</li>
+<li>Enunciar os pontos gerais sobre hospedagem de códigos e dados e os pros e contras de cada uma das opções.</li>
 </ul>
 </div>
 <blockquote>
-<p>The opposite of &quot;open&quot; isn't &quot;closed&quot;. The opposite of &quot;open&quot; is &quot;broken&quot;.</p>
-<p>--- John Wilbanks</p>
+<p>O oposto de &quot;aberto&quot; não é &quot;fechado&quot;. O oposto de &quot;aberto&quot; é &quot;quebrado&quot;.</p>
+<p>--- John Wilbanks (tradução literal)</p>
 </blockquote>
-<p>Free sharing of information might be the ideal in science, but the reality is often more complicated. Normal practice today looks something like this:</p>
+<p>O compartilhamento livre de informações deve ser o objetivo em ciência, mas a realidade é um pouco mais complicada. A prática padrão na atualidade parece algo como:</p>
 <ul>
-<li>A scientist collects some data and stores it on a machine that is occasionally backed up by her department.</li>
-<li>She then writes or modifies a few small programs (which also reside on her machine) to analyze that data.</li>
-<li>Once she has some results, she writes them up and submits her paper. She might include her data---a growing number of journals require this---but she probably doesn't include her code.</li>
-<li>Time passes.</li>
-<li>The journal sends her reviews written anonymously by a handful of other people in her field. She revises her paper to satisfy them, during which time she might also modify the scripts she wrote earlier, and resubmits.</li>
-<li>More time passes.</li>
-<li>The paper is eventually published. It might include a link to an online copy of her data, but the paper itself will be behind a paywall: only people who have personal or institutional access will be able to read it.</li>
+<li>Uma pesquisadora coleta alguns dados e armazena eles em uma máquina que ocasionalmente ganha uma cópia de backup por parte do departamento ao qual pertence.</li>
+<li>Ela então escreve ou modifica alguns pequenos programas (que também existe apenas na sua máquina) para analisar os dados.</li>
+<li>Uma vez que ela possua alguns resultados, ela escreve sobre eles e submete seu artigo. Ela talvez inclua seus dados---um número crescente de jornais requer isso---mas ela provavelmente não incluirá seus códigos.</li>
+<li>Algum tempo passa.</li>
+<li>O jornal envia-lhe comentários anônimos de alguns outros pesquisadores do seu campo de pesquisa. Ela revisa seu paper para satisfazer os comentários feitos e reenvia o artigo, sendo que nesse meio tempo ela alterou os scripts.</li>
+<li>Mais tempo se passa.</li>
+<li>O artigo é eventualmente publicado. Ele talvez inclua um link para uma cópia online dos dados utilizados, mas o artigo em si estará atrás de uma subscrição paga: apenas pessoas que possuam uma assinatura pessoal ou institucional poderão ler o artigo.</li>
 </ul>
-<p>For a growing number of scientists, though, the process looks like this:</p>
+<p>Entretanto, para um número crescente de pesquisadores, o processo parece mais com:</p>
 <ul>
-<li>The data that the scientist collects is stored in an open access repository like <a href="http://figshare.com/">figshare</a> or <a href="http://datadryad.org/">Dryad</a> as soon as it's collected, and given its own DOI.</li>
-<li>The scientist creates a new repository on GitHub to hold her work.</li>
-<li>As she does her analysis, she pushes changes to her scripts (and possibly some output files) to that repository. She also uses the repository for her paper; that repository is then the hub for collaboration with her colleagues.</li>
-<li>When she's happy with the state of her paper, she posts a version to <a href="http://arxiv.org/">arXiv</a> or some other preprint server to invite feedback from peers.</li>
-<li>Based on that feedback, she may post several revisions before finally submitting her paper to a journal.</li>
-<li>The published paper includes links to her preprint and to her code and data repositories, which makes it much easier for other scientists to use her work as starting point for their own research.</li>
+<li>Os dados coletados pela pesquisadora são armazenados em um repositório de acesso aberto como <a href="http://figshare.com/">figshare</a> ou <a href="http://datadryad.org/">Dryad</a> logo que els são coletados e eles recebem seu próprio DOI.</li>
+<li>A pesquisadora cria um novo repositório no GitHub para guardar seu trabalho.</li>
+<li>Durante o processo de análise, ela envia as alterações feitas em seus scripts (e possivelmente os arquivos de saída) para o repositório no GitHub.</li>
+<li>Ela também utiliza o repositório para seu artigo sendo que o repositório funciona como um hub para a colaboração com seus colegas.</li>
+<li>Quando ela está satisfeita com o estado do seu artigo, ela disponibiliza uma versão no <a href="http://arxiv.org/">arXiv</a> ou em outro servidor de preprints e convida outros colegas para comentarem o trabalho.</li>
+<li>Baseado nesses comentários, ela provavelmente disponibiliza várias outras versões antes de finalmente submeter seu artigo ao jornal.</li>
+<li>O artigo publicado inclui links para o preprint, para seu código e para os dados de modo que será muito mais fácil para outros pesquisadores utilizar seu trabalho como ponto de partida para suas próprias pesquisas.</li>
 </ul>
-<p>This open model accelerates discovery: the more open work is, <a href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0000308">the more widely it is cited and re-used</a>. However, people who want to work this way need to make some decisions about what exactly &quot;open&quot; means in practice.</p>
-<h2 id="licensing">Licensing</h2>
-<p>The first question is licensing. Broadly speaking, there are two kinds of open license for software, and half a dozen for data and publications. For software, people can choose between the <a href="http://opensource.org/licenses/GPL-3.0">GNU General Public License</a> (GPL) on the one hand, and licenses like the <a href="http://opensource.org/licenses/MIT">MIT</a> and <a href="http://opensource.org/licenses/BSD-2-Clause">BSD</a> licenses on the other. All of these licenses allow unrestricted sharing and modification of programs, but the GPL is <strong>infective</strong>: anyone who distributes a modified version of the code (or anything that includes GPL'd code) must make <em>their</em> code freely available as well.</p>
-<p>Proponents of the GPL argue that this requirement is needed to ensure that people who are benefiting from freely-available code are also contributing back to the community. Opponents counter that many open source projects have had long and successful lives without this condition, and that the GPL makes it more difficult to combine code from different sources. At the end of the day, what matters most is that:</p>
+<p>Esse modelo aberto acelera descobertas: quanto mais aberto o trabalho é, <a href="ihttp://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0000308">mais citado e reutilizado ele é</a>. Entretanto, pessoas que querem trabalhar dessa forma precisam tomar algumas decisões sobre o que exatamente &quot;aberto&quot; significa na prática.</p>
+<h2 id="licenciamento">Licenciamento</h2>
+<p>A primeira pergunta é o licenciamento. Falando vagamente, existe dois tipos de licenças abertas para software e meia dúzia para dados e publicações. Para software, pessoas podem escolher entre a <a href="http://opensource.org/licenses/GPL-3.0">Licença Pública Geral GNU</a> (GPL) de um lado, e licenças como a <a href="http://opensource.org/licenses/MIT">MIT</a> e <a href="http://opensource.org/licenses/BSD-2-Clause">BSD</a> do outro lado. Todas essas licenças permitem acesso e modificação irrestrita ao programa mas a GPL é <a href="reference.html#licença-infecciosa">viral</a>: alguém que distribui um código baseado em um código GPL deve fazê-lo licenciando sob a GPL.</p>
+<p>Os defensores da GPL argumentam que esse requerimento é necessário para garantir que pessoas que se beneficiam do código livremente disponível irão contribuir de volta para a comunidade. Opositores da GPL enumeram vários projetos de código aberto que existem por bastante tempo e são bem sucedidos sem fazer uso dessa condição e que a GPL torna mais difícil combinar códigos de fontes diferentes. No fim das contas, o que importa mais é que:</p>
 <ol style="list-style-type: decimal">
-<li>every project have a file in its home directory called something like <code>LICENSE</code> or <code>LICENSE.txt</code> that clearly states what the license is, and</li>
-<li>people use existing licenses rather than writing new ones.</li>
+<li>todo projeto deve ter um arquivo denominado <code>LICENSE</code> ou <code>LICENSE.txt</code> que claramente informe a licença utilizada, e</li>
+<li>pessoas utilizem licenças já existentes ao invés de criar novas.</li>
 </ol>
-<p>The second point is as important as the first: most scientists are not lawyers, so wording that may seem sensible to a layperson may have unintended gaps or consequences. The <a href="http://opensource.org/">Open Source Initiative</a> maintains a list of open source licenses, and <a href="http://www.tldrlegal.com/">tl;drLegal</a> explains many of them in plain English.</p>
-<p>When it comes to data, publications, and the like, scientists have many more options to choose from. The good news is that an organization called <a href="http://creativecommons.org/">Creative Commons</a> has prepared a set of licenses using combinations of four basic restrictions:</p>
+<p>O segundo ponto é tão importante quanto o primeiro: a maioria dos pesquisadores não são advogados de modo que palavras que pareçam fazer sentido para um leigo podem ter falhas e consequências inesperadas. A <a href="http://opensource.org/">Open Source Initiative</a> mantem uma lista de licenças de código aberto e <a href="http://www.tldrlegal.com/">tl;drLegal</a> explica muitas delas.</p>
+<p>Quando trata-se de dados, publicações e outros conteúdos, pesquisadores possuem inúmeras opções para escolher. A boa notícia é que uma organização denominada <a href="http://creativecommons.org/">Creative Commons</a> tem preparado um conjunto de licenças utilizando a combinação de quatro restrições básicas:</p>
 <ul>
-<li>Attribution: derived works must give the original author credit for their work.</li>
-<li>No Derivatives: people may copy the work, but must pass it along unchanged.</li>
-<li>Share Alike: derivative works must license their work under the same terms as the original.</li>
-<li>Noncommercial: free use is allowed, but commercial use is not.</li>
+<li>Atribuição: trabalhos derivados devem dar créditos ao autor original pelo seu trabalho.</li>
+<li>Sem Derivações: pessoas podem copiar o trabalho mas devem fazê-lo sem alterá-lo.</li>
+<li>Compartilha Igual: trabalhos derivados devem ser licenciados sob os mesmos termos que o trabalho original.</li>
+<li>Não Comercial: uso gratuito é permito mas não o uso comercial.</li>
 </ul>
-<p>These four restrictions are abbreviated &quot;BY&quot;, &quot;ND&quot;, &quot;SA&quot;, and &quot;NC&quot; respectively, so &quot;CC-BY-ND&quot; means, &quot;People can re-use the work both for free and commercially, but cannot make changes and must cite the original.&quot; These <a href="http://creativecommons.org/licenses/">short descriptions</a> summarize the six CC licenses in plain language, and include links to their full legal formulations.</p>
-<p>There is one other important license that doesn't fit into this categorization. Scientists (and other people) can choose to put material in the public domain, which is often abbreviated &quot;PD&quot;. In this case, anyone can do anything they want with it, without needing to cite the original or restrict further re-use.</p>
-<p><a href="http://software-carpentry.org/license.html">Software Carpentry</a> uses CC-BY for its lessons and the MIT License for its code in order to encourage the widest possible re-use. Again, the most important thing is for the <code>LICENSE</code> file in the root directory of your project to state clearly what your license is. You may also want to include a file called <code>CITATION</code> or <code>CITATION.txt</code> that describes how to reference your project; the one for Software Carpentry states:</p>
+<p>Essas quatro restrições são abreviadas por &quot;BY&quot;, &quot;ND&quot;, &quot;SA&quot; e &quot;NC&quot;, respectivamente, de modo que &quot;CC-BY-ND&quot; significa que &quot;Pessoas podem reusar o trabalho tanto gratuitamente como comercialmente mas não podem alterá-lo e devem citar o trabalho original.&quot; Existe uma <a href="http://creativecommons.org/licenses/">pequena descrição</a> sumarizando as seis licenças CC em uma linguagem fácil e com links para a versão legal.</p>
+<p>Existe uma outra licença importante que não enquadra-se nas categorias anteriores. Pesquisadores (e outras pessoas) podem optar por colocar o material em domínio público, que é abreviado por &quot;PD&quot;. Nesse caso, qualquer pessoa pode fazer o que desejar com o material, até mesmo sem citar o trabalho original ou restringir outros usos.</p>
+<p><a href="http://software-carpentry.org/license.html">Software Carpentry</a> utiliza CC-BY para suas lições e a licença MIT para os códigos com o objetivo de encorajar os mais variados reusos. Novamente, o mais importante no arquivo <code>LICENSE</code> na raiz do seu projeto é declarar de forma clara a licença utilizada. Você também deveria incluir um arquivo <code>CITATION</code> ou <code>CITATION.txt</code> que descreva como referenciar seu projeto. O arquivo <code>CITATION</code> utilizado por Software Carpentry contem:</p>
 <pre><code>To reference Software Carpentry in publications, please cite both of the following:
 
 Greg Wilson: &quot;Software Carpentry: Lessons Learned&quot;. arXiv:1307.5448, July 2013.
@@ -90,18 +91,19 @@ Greg Wilson: &quot;Software Carpentry: Lessons Learned&quot;. arXiv:1307.5448, J
   eprinttype  = {arxiv},
   eprint      = {1307.5448}
 }</code></pre>
-<h2 id="hosting">Hosting</h2>
-<p>The second big question for groups that want to open up their work is where to host their code and data. One option is for the lab, the department, or the university to provide a server, manage accounts and backups, and so on. The main benefit of this is that it clarifies who owns what, which is particularly important if any of the material is sensitive (i.e., relates to experiments involving human subjects or may be used in a patent application). The main drawbacks are the cost of providing the service and its longevity: a scientist who has spent ten years collecting data would like to be sure that data will still be available ten years from now, but that's well beyond the lifespan of most of the grants that fund academic infrastructure.</p>
-<p>Another option is to purchase a domain and pay an Internet service provider (ISP) to host it. This gives the individual or group more control, and sidesteps problems that can arise when moving from one institution to another, but requires more time and effort to set up than either the option above or the option below.</p>
-<p>The third option is to use a public hosting service like <a href="http://github.com">GitHub</a>, <a href="http://bitbucket.org">BitBucket</a>, <a href="http://code.google.com">Google Code</a>, or <a href="http://sourceforge.net">SourceForge</a>. All of these allow people to create repositories through a web interface, and also provide mailing lists, ways to keep track of who's doing what, and so on. They all benefit from economies of scale and network effects: it's easier to run one large service well than to run many smaller services to the same standard, and it's also easier for people to collaborate if they're using the same service, not least because it gives them fewer passwords to remember.</p>
-<p>However, all of these services place some constraints on people's work. In particular, most give users a choice: if they're willing to share their work with others, it will be hosted for free, but if they want privacy, they may have to pay. Sharing might seem like the only valid choice for science, but many institutions may not allow researchers to do this, either because they want to protect future patent applications or simply because what's new is often also frightening.</p>
-<div id="can-i-use-open-license" class="challenge">
-<h2>Can I Use Open License?</h2>
-<p>Find out whether you are allowed to apply an open license to your software. Can you do this unilaterally, or do you need permission from someone in your institution? If so, who?</p>
+<h2 id="hospedagem">Hospedagem</h2>
+<p>A segunda grande pergunta para equipes que desejam abrir seu trabalho é onde hospedar seus códigos e dados. Uma opção é o laboratório, o departamento ou a universidade providenciar um servidor, gerenciar contas, cópias de segurança, ... O benefício dessa abordagem é que deixa claro quem é dono do que, o que é particularmente importante se algum dos materiais é sensível (i.e., relacionado com experimentos envolvendo experimentos em seres humanos ou que serão utilizados para na aplicação por uma patente). O lado negativo dessa abordagem é o custo de manter o serviço e sua longevidade: um pesquisador que passou os últimos dez anos coletando dados deseja ter certeza que os dados coletados irão estar disponíveis pelos próximos dez anos mas, infelizmente, os financiamentos para infraestruturas acadêmicas não duram mais que alguns anos.</p>
+<p>Outra opção é comprar um domínio e pagar um Internet service provider (ISP) para hospedar o conteúdo. Essa abordagem permite maior controle por parte do indivíduo e do grupo mas pode criar problemas quando mudando de instituição e necessitará de mais tempo e esforço do que as outras opções listadas nessa página.</p>
+<p>A terceira opção é utilizar um serviço de hospedagem gratuito como <a href="http://github.com">GitHub</a>, <a href="http://bitbucket.org">BitBucket</a>, <a href="http://code.google.com">Google Code</a>, ou <a href="http://sourceforge.net">SourceForge</a>. Todos esses serviços oferecem uma interface web que possibilita as pessoas criarem, visualizarem e editarem seus repositórios. Esses serviços também oferecem ferramentas para comunicação e gerenciamento do projeto que incluem lista de problemas, wiki, notificação por email e revisão de código. Esses serviços se beneficiam da economia de escala e efeito de rede: é mais fácil manter funcionando um grande serviço do que vários pequenos serviços nos mesmos padrões. Além disso é mais fácil para pessoas colaborarem se estiverem utilizando o mesmo serviço: utilizar um serviço popular pode ajudar a conectar seu projeto com comunidades que já utilizam o mesmo serviço.</p>
+<p>Como um exemplo, a <a href="https://github.com/swcarpentry/">Fundação Software Carpentry</a> utiliza o GitHub para hospedagem de seus projetos que inclui <a href="https://github.com/swcarpentry/git-novice/blob/gh-pages/04-open.md">essa lição</a>. Qualquer pessoa com uma conta no GitHub pode sugerir mudanças nesse texto.</p>
+<p>Entretanto, todos esses serviços impõe algumas restrições em quais trabalho podem ser hospedados. Em particular, a grande maioria oferece a seguinte opção: se o trabalho for disponível para qualquer usuário da internet então não será cobrado taxas pelo serviço mas se o usuário desejar manter o projeto acessível para apenas alguns contribuidores então será necessário pagar pelo serviço. Compartilhar é o desejável para a ciência mas muitas instituições podem impedir seus pesquisadores de fazer, por exemplo porque quererem se proteger para futuras aplicações de patentes. Se você deparar-se com tais restrições, pode ser produtivo você perguntar sobre as motivações para as restrições - tanto como primeiro passo para pedir uma exceção para um projeto específico como também para tentar uma reforma mais ampla no nível institucional na direção da ciência aberta.</p>
+<div id="posso-utilizar-uma-licença-aberta" class="challenge">
+<h2>Posso utilizar uma licença aberta?</h2>
+<p>Encontre em que parte do seu trabalho você pode aplicar uma licença de código aberta. Você pode fazer isso unilateralmente ou você precisa da permissão de alguém na sua instituição? Se precisa de permissão, quem é essa pessoa?</p>
 </div>
-<div id="my-work-can-be-public" class="challenge">
-<h2>My Work Can Be Public?</h2>
-<p>Find out whether you are allowed to host your work openly on a public forge. Can you do this unilaterally, or do you need permission from someone in your institution? If so, who?</p>
+<div id="meu-trabalho-pode-ser-público" class="challenge">
+<h2>Meu trabalho pode ser público?</h2>
+<p>Descubra se você pode hospedar seu trabalho em um serviço gratuito. Você pode fazer isso unilateralmente ou você precisa da permissão de alguém na sua instituição? Se precisa de permissão, quem é essa pessoa?</p>
 </div>
         </div>
       </div>

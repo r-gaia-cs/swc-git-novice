@@ -1,106 +1,104 @@
 ---
-layout: lesson
-title: Version Control with Git
-subtitle: Collaborating
+layout: page
+title: Introdução ao Controle de Versão com Git
+subtitle: Colaborando
 ---
-> ## Learning Objectives {.objectives}
+> ## Objetivos {.objectives}
 >
-> *   Explain what remote repositories are and why they are useful.
-> *   Explain what happens when a remote repository is cloned.
-> *   Explain what happens when changes are pushed to or pulled from a remote repository.
+> *   Explicar o que são repositórios remotos e por que eles são úteis.
+> *   Explicar o que acontece quando um repositório remoto é clonado.
+> *   Explicar o que acontece quando mudanças são obtidas e enviadas para um
+>     repositório remoto.
 
-Version control really comes into its own
-when we begin to collaborate with other people.
-We already have most of the machinery we need to do this;
-the only thing missing is to copy changes from one repository to another.
+Controle de versão começa a fazer falta quando começamos a colaborar com outras
+pessoas. Já temos quase todas as ferramentas necessárias para fazer isso, só
+falta aprendermos como copiar alterações de um repositório para outro.
 
-Systems like Git allow us to move work between any two repositories.
-In practice,
-though,
-it's easiest to use one copy as a central hub,
-and to keep it on the web rather than on someone's laptop.
-Most programmers use hosting services like [GitHub](http://github.com) or [BitBucket](http://bitbucket.org)
-to hold those master copies;
-we'll explore the pros and cons of this in the final section of this lesson.
+Sistemas como Git permite trocar alterações entre dois repositórios quaisquer.
+Na prática, entretanto, é mais fácil utilizar uma cópia como hub central e
+mantê-lo em um servidor conectado à internet do que no notebook de alguém.
+Grande parte dos programadores utilizam serviços de hospedagem como
+[GitHub](https://github.com) ou [BitBucket](https://bitbucket.org) para
+armazenar esses cópias. Vamos explorar os pros e os contras dessa abordagem no
+final dessa lição.
 
-Let's start by sharing the changes we've made to our current project with the world.
-Log in to GitHub,
-then click on the icon in the top right corner to create a new repository called `planets`:
+Vamos começar por compartilhar as mudanças que fizemos no nosso projeto com o
+mundo. Autentique-se no GitHub e clique no ícone no canto superior direito para
+criar um novo repositório denominado `planetas`:
 
-<img src="fig/github-create-repo-01.png" alt="Creating a Repository on GitHub (Step 1)" />
+<img src="fig/github-create-repo-01.png" alt="Criando um novo repositório no GitHub (Passo 1)" />
 
-Name your repository "planets" and then click "Create Repository":
+Nomeie o seu repositório de "planetas" e selecione "Create Repository":
 
-<img src="fig/github-create-repo-02.png" alt="Creating a Repository on GitHub (Step 2)" />
+<img src="fig/github-create-repo-02.png" alt="Criando um novo repositório no GitHub (Passo 2)" />
 
-As soon as the repository is created,
-GitHub displays a page with a URL and some information on how to configure your local repository:
+Assim que o repositório for criado, GitHub irá mostrar uma página com uma URL e
+algumas informações de como configurar seu repositório local:
 
-<img src="fig/github-create-repo-03.png" alt="Creating a Repository on GitHub (Step 3)" />
+<img src="fig/github-create-repo-03.png" alt="Criando um novo repositório no GitHub (Passo 3)" />
 
-This effectively does the following on GitHub's servers:
+Esse procedimento realiza os seguintes comandos nos servidores do GitHub:
 
 ~~~ {.bash}
-$ mkdir planets
-$ cd planets
+$ mkdir planetas
+$ cd planetas
 $ git init
 ~~~
 
-Our local repository still contains our earlier work on `mars.txt`,
-but the remote repository on GitHub doesn't contain any files yet:
+Nosso repositório local ainda contem nosso trabalho anterior no arquivo
+`marte.txt` mas o repositório remoto no GitHub não contem nenhum arquivo:
 
 <img src="fig/git-freshly-made-github-repo.svg" alt="Freshly-Made GitHub Repository" />
 
-The next step is to connect the two repositories.
-We do this by making the GitHub repository a **remote**
-for the local repository.
-The home page of the repository on GitHub includes
-the string we need to identify it:
+O próximo passo é conectar esses dois repositórios. Fazemos isso transformando o
+repositório no GitHub um repositório [remote](../../gloss.html#repository-remote)
+para o repositório local. Na página inicial do repositório no GitHub encontra-se
+a string necessária para identificá-lo:
 
 <img src="fig/github-find-repo-string.png" alt="Where to Find Repository URL on GitHub" />
 
-Click on the 'HTTPS' link to change the **protocol** from SSH to HTTPS.
+Selecione 'HTTPS' para alterar o [protocol](../../gloss.html#protocol) SSH para
+HTTPS.
 
 > ## HTTPS vs SSH {.callout}
 >
-> We use HTTPS here because it does not require additional configuration.
-> After the workshop you may want to set up SSH access, which is a bit more
-> secure, by following one of the great tutorials from
+> Utilizamos HTTPS porque ele não requer configurações adicionais.
+> Depois do workshop você pode querer configurar acesso via SSH,
+> que é um pouco seguro,
+> seguindo um dos tutoriais disponibilizados por
 > [GitHub](https://help.github.com/articles/generating-ssh-keys),
 > [Atlassian/BitBucket](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git)
-> and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
-> (this one has a screencast).
+> e [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
+> (esse é um vídeo).
 
 <img src="fig/github-change-repo-string.png" alt="Changing the Repository URL on GitHub" />
 
-Copy that URL from the browser,
-go into the local `planets` repository,
-and run this command:
+Copie essa URL do navegador, vá para seu repositório local e execute o comando:
 
 ~~~ {.bash}
-$ git remote add origin https://github.com/vlad/planets
+$ git remote add origin https://github.com/vlad/planetas
 ~~~
 
-Make sure to use the URL for your repository rather than Vlad's:
-the only difference should be your username instead of `vlad`.
+Certifique-se de utilizar a URL do seu repositório ao invés da URL do Vlad: a
+única diferença deve ser seu nome de usuário no lugar de `vlad`.
 
-We can check that the command has worked by running `git remote -v`:
+Você pode verificar que o comando anterior foi executado corretamente utilizando
+`git remote -v`:
 
 ~~~ {.bash}
 $ git remote -v
 ~~~
 ~~~ {.output}
-origin   https://github.com/vlad/planets.git (push)
-origin   https://github.com/vlad/planets.git (fetch)
+origin   https://github.com/vlad/planetas.git (push)
+origin   https://github.com/vlad/planetas.git (fetch)
 ~~~
 
-The name `origin` is a local nickname for your remote repository:
-we could use something else if we wanted to,
-but `origin` is by far the most common choice.
+O nome `origin` é o apelido local para seu repositório remoto: você pode
+utilizar outro apelido no lugar se você desejar, mas `origin` é a opção mais
+utilizada.
 
-Once the nickname `origin` is set up,
-this command will push the changes from our local repository
-to the repository on GitHub:
+Uma vez que o apelido `origin` está configurado, o comando a seguir irá copiar
+as alterações no repositório local para o repositório no GitHub:
 
 ~~~ {.bash}
 $ git push origin master
@@ -111,121 +109,122 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
 Writing objects: 100% (9/9), 821 bytes, done.
 Total 9 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets
+To https://github.com/vlad/planetas
  * [new branch]      master -> master
 Branch master set up to track remote branch master from origin.
 ~~~
 
 > ## Proxy {.callout}
 >
-> If the network you are connected to uses a proxy there is an chance that your last
-> command failed with "Could not resolve hostname" as the error message. To
-> solve this issue you need to tell Git about the proxy:
+> Se a rede que você está conectado utiliza um proxy existe uma change do último
+> comando ter falhado com "Could not resolve hostname" como mensagem de error.
+> Para resolver esse problema você precisa informar ao Git sobre o proxy:
 >
 > ~~~ {.bash}
 > $ git config --global http.proxy http://user:password@proxy.url
 > $ git config --global https.proxy http://user:password@proxy.url
 > ~~~
 >
-> When you connect to another network that doesn't use a proxy you will need to
-> tell Git to disable the proxy using
+> Quando você se conectar em outra rede que não utiliza um proxy você terá que
+> dizer para o Git desabilitar o uso do proxy utilizando
 >
 > ~~~ {.bash}
 > $ git config --global --unset http.proxy
 > $ git config --global --unset https.proxy
 > ~~~
 
-> ## Password Managers {.callout}
+> ## Gerenciadores de Senhas {.callout}
 >
-> If your operating system has a password manager configured, `git push` will
-> try to use it when it needs your username and password. If you want to type
-> your username and password at the terminal instead of using
-> a password manager, type
+> Se seu sistema operacional possui um gerenciador de senha configurad,
+> `git push` irá tentar utilizá-lo quando for necessário informar o usuário e
+> senha. Se você desejar digitar seu usuário e senha no terminal ao invés do
+> gerenciador de senha, digite
 >
 > ~~~ {.bash}
 > $ unset SSH_ASKPASS
 > ~~~
 >
-> You may want to add this command at the end of your `~/.bashrc` to make it the
-> default behavior.
+> Você talvez queira adicionar esse comando no final do seu `~/.bashrc`
+> para que esse passe a ser o comportamento padrão.
 
-Our local and remote repositories are now in this state:
+Agora o seus repositórios locais e remotos estão no seguinte estado:
 
-<img src="fig/github-repo-after-first-push.svg" alt="GitHub Repository After First Push" />
+<img src="fig/github-repo-after-first-push.svg" alt="Repositório no GitHub após o primeiro push" />
 
-> ## The '-u' Flag {.callout}
+> ## A opção '-u' {.callout}
 >
-> You may see a `-u` option used with `git push` in some documentation.
-> It is related to concepts we cover in our intermediate lesson,
-> and can safely be ignored for now.
+> Normalmente você vai encontrar a opção `-u` em outras documentações
+> disponíveis na internet. Ela está relacionada com conceitos apresentados na
+> nossa lição intermediária e pode ser ignorada sem problemas.
 
-We can pull changes from the remote repository to the local one as well:
+Você também pode pegar as alterações no seu repositório remoto para o local:
 
 ~~~ {.bash}
 $ git pull origin master
 ~~~
 ~~~ {.output}
-From https://github.com/vlad/planets
+From https://github.com/vlad/planetas
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
 
-Pulling has no effect in this case
-because the two repositories are already synchronized.
-If someone else had pushed some changes to the repository on GitHub,
-though,
-this command would download them to our local repository.
+Nesse caso, nenhuma modificação foi recebida porque os dois repositórios já
+estavam sincronizados. Se alguém tivesse enviado alguma alteração para esse
+repositório no GitHub, o comando anterior teria baixado as modificações para o
+repositório local.
 
-For the next step, get into pairs.
-Pick one of your repositories on Github to use for collaboration.
+Para o próximo passo, iremos trabalhar em pares.
+Escolha um dos seus repositórios no GitHub para utilizá-lo colaborativamente.
 
-> ## Practicing by yourself {.callout}
+> ## Praticando sozinho {.callout}
 >
-> If you're working through this lesson on your own, you can carry on by opening
-> a second terminal window, and switching to another directory (e.g. `/tmp`).
-> This window will represent your partner, working on another computer. You
-> won't need to give anyone access on Github, because both 'partners' are you.
+> Se você estiver seguindo essa lição sozinho, antes de continuar abra um
+> segundo terminal, altere o diretório corrente para outro diretório (e.g.
+> `/tmp`). Esse segundo terminal irá representar seu colega que estaria
+> trabalhando em outro computador. Você não precisa dar permissões para ninguém
+> pois o seu "colega" vai ser você mesmo.
 
-The partner whose repository is being used needs to give the other person access.
-On Github, click the settings button on the right,
-then select Collaborators, and enter your partner's username.
+O dono do repositório que será utilizado precisa dar permissões de escrita para
+a outra pessoa. No GitHub, selecione "Settings" no lado direito, depois
+"Collaborators" e depois digite o usuário da sua dupla.
 
 <img src="fig/github-add-collaborators.png" alt="Adding collaborators on Github" />
 
-The other partner should `cd` to another directory
-(so `ls` doesn't show a `planets` folder),
-and then make a copy of this repository on your own computer:
+Quem *não* é dono do repositório que será utilizado deve mudar de diretório,
+utilizando `cd`, de tal forma que `ls` não mais mostre o diretório `planetas` e
+em seguida criar uma cópia do repositório que será utilizado no seu computador:
 
 ~~~ {.bash}
-$ git clone https://github.com/vlad/planets.git
+$ git clone https://github.com/vlad/planetas.git
 ~~~
 
-Replace 'vlad' with your partner's username (the one who owns the repository).
+Troque `vlad` pelo usuário do seu parceiro (o dono do repositório que será
+utilizado).
 
-`git clone` creates a fresh local copy of a remote repository.
+`git clone` irá criar uma cópia local do repositório remoto.
 
 <img src="fig/github-collaboration.svg" alt="After Creating Clone of Repository" />
 
-The new collaborator can now make a change in their copy of the repository:
+Agora o novo colaborador pode fazer uma alteração na sua cópia do repositório:
 
 ~~~ {.bash}
-$ cd planets
-$ nano pluto.txt
-$ cat pluto.txt
+$ cd planetas
+$ nano plutao.txt
+$ cat plutao.txt
 ~~~
 ~~~ {.output}
-It is so a planet!
+Também é um planeta!
 ~~~
 ~~~ {.bash}
-$ git add pluto.txt
-$ git commit -m "Some notes about Pluto"
+$ git add plutao.txt
+$ git commit -m "Algumas notas sobre Plutão"
 ~~~
 ~~~ {.output}
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+create mode 100644 plutao.txt
 ~~~
 
-then push the change to GitHub:
+e depois enviar as mudanças para o GitHub:
 
 ~~~ {.bash}
 $ git push origin master
@@ -236,18 +235,17 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
+To https://github.com/vlad/planetas.git
    9272da5..29aba7c  master -> master
 ~~~
 
-Note that we didn't have to create a remote called `origin`:
-Git does this automatically,
-using that name,
-when we clone a repository.
-(This is why `origin` was a sensible choice earlier
-when we were setting up remotes by hand.)
+Note que não precisamos criar um repositório remoto chamado `origin`
+pois Git faz isso automaticamente quando clonamos um repositório.
+(Por é o motivo que utilizamos `origin` anteriormente
+quando configuramos o repositório remoto manualmente).
 
-We can now download changes into the original repository on our machine:
+Podemos baixar as mudanças agora disponíveis no GitHub no repositório original
+em nossa máquina:
 
 ~~~ {.bash}
 $ git pull origin master
@@ -257,20 +255,21 @@ remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0)
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/vlad/planetas
  * branch            master     -> FETCH_HEAD
 Updating 9272da5..29aba7c
 Fast-forward
- pluto.txt | 1 +
+plutão.txt | 1 +
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 plutão.txt
 ~~~
 
-> ## GitHub Timestamp {.challenge}
+> ## Marcação de tempo no GitHub {.challenge}
 >
-> Create a repository on GitHub,
-> clone it,
-> add a file,
-> push those changes to GitHub,
-> and then look at the **timestamp** of the change on GitHub.
-> How does GitHub record times, and why?
+> Crie um repositório no GitHub,
+> clone-o,
+> adicione um arquivo,
+> envie essa mudança para o GitHub
+> e olhe o horário, em inglês [timestamp](reference.html#timestamp),
+> que as alterações foram feitas no GitHub.
+> Como que o GitHub grava o tempo? E por que?

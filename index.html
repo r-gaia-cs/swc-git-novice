@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: Version Control with Git</title>
+    <title>Software Carpentry: Introdução ao Controle de Versão com Git</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,33 +25,33 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title">Version Control with Git</h1>
+          <h1 class="title">Introdução ao Controle de Versão com Git</h1>
           
-<p>Wolfman and Dracula have been hired by Universal Missions (a space services spinoff from Euphoric State University) to investigate if it is possible to send their next planetary lander to Mars. They want to be able to work on the plans at the same time, but they have run into problems doing this in the past. If they take turns, each one will spend a lot of time waiting for the other to finish, but if they work on their own copies and email changes back and forth things will be lost, overwritten, or duplicated.</p>
-<p>A colleague suggests using <strong>version control</strong> to manage their work. Version control is better than mailing files back and forth because:</p>
+<p>Lobisomem e Drácula foram contratados pelo Universal Missions (uma agência de serviços espaciais da Euphoric State University) para descobrir onde a companhia deveria enviar sue próximo robô explorador. Eles desejam trabalhar nos planos ao mesmo tempo mas tiveram problemas ao fazer isso no passado. Se eles trabalharem em turnos, cada um deles irá gastar muito tempo esperando o outro terminar mas se eles trabalharem em sua cópia e trocarem emails com as mudanças alguma coisa acabará se perdendo, sendo reescrita ou duplicada.</p>
+<p>A solução é eles utilizarem <a href="reference.html#controle-de-versão">controle de versão</a> para gerenciar o trabalho. Controle de versão é melhor que trocar arquivos por email pois:</p>
 <ul>
-<li>Nothing that is committed to version control is ever lost. This means it can be used like the &quot;undo&quot; feature in an editor, and since all old versions of files are saved it's always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.</li>
-<li>It keeps a record of who made what changes when, so that if people have questions later on, they know who to ask.</li>
-<li>It's hard (but not impossible) to accidentally overlook or overwrite someone's changes: the version control system automatically notifies users whenever there's a conflict between one person's work and another's.</li>
+<li>Nada que é salva no controle de versão pode ser perdido. Isso significa que ele pode ser utilizado como a ferramenta &quot;desfazer&quot; de um editor de texto e como todas as versões anteriores dos arquivos estão salvas sempre é possível voltar no tempo para saber quem escreveu o que em um dia particular ou que versão de um programa foi utilizado para gerar um resultado.</li>
+<li>Ele mantem um registro de quem fez cada mudança e quando ela foi feita e assim, se alguém tiver perguntas depois saberá a quem perguntar.</li>
+<li>É difícil (mas não impossível) de acidentalmente sobrescrever as mudanças de alguém: o sistema de controle de versão automaticamente avisa o usuário quando existe um conflito entre o trabalho de duas ou mais pessoas.</li>
 </ul>
-<p>Version control is the lab notebook of the digital world: it's what professionals use to keep track of what they've done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. And it isn't just for software: books (like this one), papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.</p>
-<div id="prerequisites" class="prereq prereq">
-<h2 id="prerequisites" class="prereq prereq">Prerequisites</h2>
-<p>A short paragraph describing what learners need to know before tackling this lesson.</p>
+<p>Controle de versão é o caderno de laboratório do mundo digital: é o que profissionais utilizam para manter registro do que fizeram e para colaborar com outras pessoas. Todo grande projeto de desenvolvimento de software depende dele, e vários programadores também o utilizam para seus pequenos projetos. E ele não é utilizado apenas para software: livros (como esse), artigos, pequenos conjuntos de dados, e qualquer coisa que é modificado ao longo do tempo ou precisa ser compartilhada pode e deveria ser armazenado em um sistema para controle de versão.</p>
+<div id="pré-requisitos" class="prereq">
+<h2>Pré-requisitos</h2>
+<p>Nessa lição utilizamos Git pela linha de comando e por isso espera-se uma experiência prévia com ela <em>embora isso não seja obrigatório</em>.</p>
 </div>
-<h2 id="topics">Topics</h2>
+<h2 id="tópicos">Tópicos</h2>
 <ol style="list-style-type: decimal">
-<li><a href="01-backup.html">A Better Kind of Backup</a></li>
-<li><a href="02-collab.html">Collaborating</a></li>
-<li><a href="03-conflict.html">Conflicts</a></li>
-<li><a href="04-open.html">Open Science</a></li>
+<li><a href="01-backup.html">Uma melhor forma de backup</a></li>
+<li><a href="02-collab.html">Colaborando</a></li>
+<li><a href="-3-conflict.html">Conflitos</a></li>
+<li><a href="04-open.html">Ciência Aberta</a></li>
 </ol>
-<h2 id="other-resources">Other Resources</h2>
+<h2 id="outros-recursos">Outros recursos</h2>
 <ul>
-<li><a href="motivation.html">Motivation</a></li>
-<li><a href="reference.html">Reference</a></li>
-<li><a href="discussion.html">Discussion</a></li>
-<li><a href="instructors.html">Instructor's Guide</a></li>
+<li><a href="motivation.html">Motivação</a></li>
+<li><a href="reference.html">Referência</a></li>
+<li><a href="discussion.html">Discussão</a></li>
+<li><a href="instructors.html">Guia do Instrutor</a></li>
 </ul>
         </div>
       </div>

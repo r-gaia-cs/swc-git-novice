@@ -1,35 +1,34 @@
 ---
-layout: lesson
-title: Version Control with Git
-subtitle: A Better Kind of Backup
+layout: page
+title: Introdução ao Controle de Versão com Git
+subtitle: Uma Melhor Solução de Backup
 ---
-> ## Learning Objectives {.objectives}
-> 
-> *   Explain which initialization and configuration steps are required once per machine,
->     and which are required once per repository.
-> *   Go through the modify-add-commit cycle for single and multiple files
->     and explain where information is stored at each stage.
-> *   Identify and use Git revision numbers.
-> *   Compare files with old versions of themselves.
-> *   Restore old versions of files.
-> *   Configure Git to ignore specific files,
->     and explain why it is sometimes useful to do so.
+> ## Objetivos {.objectives}
+>
+> *   Explicar os passos de inicialização e configuração necessários para
+>     cada máquina e aqueles necessários para cada repositório.
+> *   Passa pelo ciclo de modificação, adição e commit para um ou mais arquivos e
+>     explicar onde a informação é salva em cada estágio.
+> *   Identificar e utilizar o número de versão atribuído pelo Git.
+> *   Comparar o arquivo atual com versões antigas.
+> *   Restaurar versões antigas de arquivos.
+> *   Configurar Git para ignorar arquivos específicos, e explicar porque em
+> *   alguns casos é útil fazer isso.
 
-We'll start by exploring how version control can be used
-to keep track of what one person did and when.
-Even if you aren't collaborating with other people,
-version control is much better for this than this:
+Nós vamos começar explorando como o controle de versão pode ser utilizado para
+manter o registro do que e de quando uma pessoa fez algo. Mesmo se você não
+estiver colaborando com outros, controle de versão é muito melhor que:
 
 <div>
   <a href="http://www.phdcomics.com"><img src="fig/phd101212s.gif" alt="Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com" /></a>
   <p>"Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com</p>
 </div>
 
-### Setting Up
+### Configurando
 
-The first time we use Git on a new machine,
-we need to configure a few things.
-Here's how Dracula sets up his new laptop:
+Na primeira vez que utilizamos Git em uma máquina, precisamos configurar algumas
+coisas. A seguir encontra-se o que Drácula fez para configurar seu novo
+notebook:
 
 ~~~ {.bash}
 $ git config --global user.name "Vlad Dracula"
@@ -38,27 +37,27 @@ $ git config --global color.ui "auto"
 $ git config --global core.editor "nano"
 ~~~
 
-(Please use your own name and email address instead of Dracula's,
-and please make sure you choose an editor that's actually on your system,
-such as `notepad` on Windows.)
+(Por favor, utilize seu nome e endereço de email ao invés do de Drácula e por
+favor certifique-se que você escolheu um editor disponível no seu sistema, como
+o `notepad` se estiver utilizando Windows).
 
-Git commands are written `git verb`,
-where `verb` is what we actually want it to do.
-In this case,
-we're telling Git:
+Os commandos do Git são escritos como `git verbo`, onde `verbo` é o que
+desejamos fazer. No caso anterior, estamos dizendo para o Git:
 
-*   our name and email address,
-*   to colorize output,
-*   what our favorite text editor is, and
-*   that we want to use these settings globally (i.e., for every project),
+*   nosso nome e endereço de email,
+*   para colorir a saída,
+*   qual o nosso editor de texto favorito, e
+*   que queremos utilizar essas informações globalmente (i.e., para todo
+*   projeto).
 
-The four commands above only need to be run once:
-the flag `--global` tells Git to use the settings for every project on this machine.
+Os quatro comandos anteriores só precisam ser executados uma vez: a opção (em
+inglês denominada de *flag*) ``--global`` diz para o Git utilizar as
+configurações para todo projeto na máquina atual.
 
 > ## Proxy {.callout}
 >
-> In some networks you need to use a proxy. If this is the case you may also
-> need to tell Git about the proxy:
+> Em alguns casos você precisa utilizar um proxy para se conectar a internet.
+> Se esse for o seu caso você precisa informar o Git sobre o proxy:
 >
 > ~~~ {.bash}
 > $ git config --global http.proxy proxy-url
@@ -72,33 +71,33 @@ the flag `--global` tells Git to use the settings for every project on this mach
 > $ git config --global --unset https.proxy
 > ~~~
 
-### Creating a Repository
+### Criando um repositório
 
-Once Git is configured,
-we can start using it.
-Let's create a directory for our work:
+Uma vez que Git está configurado, podemos começar a utilizá-lo.
+Vamos criar um diretório para nosso trabalho:
 
 ~~~ {.bash}
-$ mkdir planets
-$ cd planets
+$ mkdir planetas
+$ cd planetas
 ~~~
 
-and tell Git to make it a **repository**&mdash;a place where
-Git can store old versions of our files:
+e dizemos para fazer do diretório um
+[repositório](../../gloss.html#repository)&mdash;um lugar onde Git irá
+armazenar as versões anteriores de nossos arquivos:
 
 ~~~ {.bash}
 $ git init
 ~~~
 
-If we use `ls` to show the directory's contents,
-it appears that nothing has changed:
+Se utilizarmos `ls` para mostrar o conteúdo do diretório irá parecer que nada
+foi feito:
 
 ~~~ {.bash}
 $ ls
 ~~~
 
-But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory called `.git`:
+Mas se adicionarmos a opção `-a` para mostrar todos os arquivos, iremos ver que
+Git criou um diretório oculto denominado `.git`:
 
 ~~~ {.bash}
 $ ls -a
@@ -107,12 +106,11 @@ $ ls -a
 .	..	.git
 ~~~
 
-Git stores information about the project in this special sub-directory.
-If we ever delete it,
-we will lose the project's history.
+Git armazena informações sobre o projeto nesse subdiretório especial. Se
+deletarmos ele iremos perder o histórico do projeto.
 
-We can check that everything is set up correctly
-by asking Git to tell us the status of our project:
+Podemos verificar que a configuração foi feita com sucesso requisitando o estado
+do nosso projeto para o Git:
 
 ~~~ {.bash}
 $ git status
@@ -125,41 +123,41 @@ $ git status
 nothing to commit (create/copy files and use "git add" to track)
 ~~~
 
-### Tracking Changes to Files
+### Monitorando Alterações nos Arquivos
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
-(We'll use `nano` to edit the file;
-you can use whatever editor you like.
-In particular, this does not have to be the core.editor you set globally earlier.)
-
-~~~ {.bash}
-$ nano mars.txt
-~~~
-
-Type the text below into the `mars.txt` file:
+Vamos criar um arquivo chamado `marte.txt` que contém algumas notas sobre a
+sustentabilidade de uma base no planeta vermelho. (Iremos utilizar um editor
+chamado `nano` para editar o arquivo mas você pode utilizar o editor de sua
+preferência. Em particular, ele não precisa ser o mesmo editor informado para o
+Git).
 
 ~~~ {.bash}
-Cold and dry, but everything is my favorite color
+$ nano marte.txt
 ~~~
 
-`mars.txt` now contains a single line:
+Escreva o texto abaixo no arquivo `marte.txt`:
+
+~~~
+Frio e seco, mas tudo é da minha cor favorita.
+~~~
+
+`marte.txt` agora contem a seguinte linha:
 
 ~~~ {.bash}
 $ ls
 ~~~
 ~~~ {.output}
-mars.txt
+marte.txt
 ~~~
 ~~~ {.bash}
-$ cat mars.txt
+$ cat marte.txt
 ~~~
 ~~~ {.output}
-Cold and dry, but everything is my favorite color
+Frio e seco, mas tudo é da minha cor favorita.
 ~~~
 
-If we check the status of our project again,
-Git tells us that it's noticed the new file:
+Se verificarmos o estado do nosso projeto novamente, Git irá informar que ele
+encontrou um novo arquivo:
 
 ~~~ {.bash}
 $ git status
@@ -172,19 +170,19 @@ $ git status
 # Untracked files:
 #   (use "git add <file>..." to include in what will be committed)
 #
-#	mars.txt
+#	marte.txt
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
-The "untracked files" message means that there's a file in the directory
-that Git isn't keeping track of.
-We can tell Git that it should do so using `git add`:
+A mensagem "untracked files" significa que existe um arquivo no diretório que
+Git não está monitorando. Iremos dizer para o Git que ele deve fazê-lo
+utilizando `git add`:
 
 ~~~ {.bash}
-$ git add mars.txt
+$ git add marte.txt
 ~~~
 
-and then check that the right thing happened:
+e então verificamos alteração na mensagem de estado:
 
 ~~~ {.bash}
 $ git status
@@ -197,38 +195,35 @@ $ git status
 # Changes to be committed:
 #   (use "git rm --cached <file>..." to unstage)
 #
-#	new file:   mars.txt
+#	new file:   marte.txt
 #
 ~~~
 
-Git now knows that it's supposed to keep track of `mars.txt`,
-but it hasn't yet recorded any changes for posterity as a commit.
-To get it to do that,
-we need to run one more command:
+Git agora sabe que ele deve monitorar o arquivo `marte.txt` mas ele ainda não
+salvou nenhuma mudança para a posterioridade como um commit. Para fazer isso
+precisamos executar mais um comando:
 
 ~~~ {.bash}
-$ git commit -m "Starting to think about Mars"
+$ git commit -m "Começando a pensar em Marte"
 ~~~
 ~~~ {.output}
-[master (root-commit) f22b25e] Starting to think about Mars
+[master (root-commit) f22b25e] Começando a pensar em Marte
  1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+ create mode 100644 marte.txt
 ~~~
 
-When we run `git commit`,
-Git takes everything we have told it to save by using `git add`
-and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a **revision**
-and its short identifier is `f22b25e`.
-(Your revision may have another identifier.)
+Quando executamos `git commit`, Git pega todas as mudanças que informamos
+precisar ser salvas quando utilizamos `git add` e armazena uma cópia permanente
+dentro do diretório especial `.git`. Essa cópia permanente é denominada
+[revisão](../../gloss.html#revision) é brevemente identificada por `f22b25e`.
+(Sua revisão pode ter um identificador diferente.)
 
-We use the `-m` flag (for "message")
-to record a comment that will help us remember later on what we did and why.
-If we just run `git commit` without the `-m` option,
-Git will launch `nano` (or whatever other editor we configured at the start)
-so that we can write a longer message.
+Utilizamos a opção `-m` (de "mensagem") para salvar um comentário que irá nos
+ajudar a lembrar depois o que fizemos e porque. Se apenas executarmos `git
+commit` sem a opção `-m`, Git irá iniciar `nano` (ou o editor que tivermos
+configurado no início) para que possamos escrever um comentário longo.
 
-If we run `git status` now:
+Se executarmos `git status` agora:
 
 ~~~ {.bash}
 $ git status
@@ -238,9 +233,9 @@ $ git status
 nothing to commit, working directory clean
 ~~~
 
-it tells us everything is up to date.
-If we want to know what we've done recently,
-we can ask Git to show us the project's history using `git log`:
+Git está dizendo que tudo está atualizado. Se desejarmos saber o que foi feito
+recentemente podemos pedir ao Git que mostre o histórico do projeto utilizando
+`git log`:
 
 ~~~ {.bash}
 $ git log
@@ -250,43 +245,41 @@ commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Starting to think about Mars
+    Começando a pensar em Marte
 ~~~
 
-`git log` lists all revisions  made to a repository in reverse chronological order.
-The listing for each revision includes
-the revision's full identifier
-(which starts with the same characters as
-the short identifier printed by the `git commit` command earlier),
-the revision's author,
-when it was created,
-and the log message Git was given when the revision was created.
+`git log` lista todas as revisões salvas em um repositório na ordem cronológica
+reversa. Essa lista inclui, para cada revisão, o identificador completo da
+revisão (que inicia com os mesmos caracteres que o identificador curto impresso
+pelo comando `git commit` anteriormente), o autor da revisão, quando ela foi
+criada e o comentário dado à revisão quando ela foi criada.
 
-> ## Where Are My Changes? {.callout}
+> ## Onde estão minhas mudanças? {.callout}
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
-> That's because Git saves information about files' history
-> in the special `.git` directory mentioned earlier
-> so that our filesystem doesn't become cluttered
-> (and so that we can't accidentally edit or delete an old version).
+> Se executarmos `ls` agora continuamos a encontrar apenas um arquivo chamado
+> `marte.txt`. Isso deve-se ao fato do Git salvar as informações com
+> histórico dos arquivos no diretório especial denominado `.git` mencionado
+> anteriormente tal que nosso sitema de arquivos não fique cheio (e nós
+> acidentalmente editemos ou removemos uma versão anterior.
 
-### Changing a File
+### Alterando arquivos
 
-Now suppose Dracula adds more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
-you may use a different editor, and don't need to `cat`.)
+Agora suponha adicionou algumas informações ao arquivo. (Novamente, editaremos o
+arquivo utilizando o `nano` e utilizaremos o commando `cat` para mostrar o
+conteúdo do arquivo; você pode utilizar outro editor e não precisa do comando
+`cat`.)
 
 ~~~ {.bash}
-$ nano mars.txt
-$ cat mars.txt
+$ nano marte.txt
+$ cat marte.txt
 ~~~
 ~~~ {.output}
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+Frio e seco, mas tudo é da minha cor favorita.
+Duas luas pode ser um problema para o Lobisomem.
 ~~~
 
-When we run `git status` now,
-it tells us that a file it already knows about has been modified:
+Quando executamos o comando `git status`, ele irá informar que um arquivo sendo
+monitorado foi alterado:
 
 ~~~ {.bash}
 $ git status
@@ -297,54 +290,50 @@ $ git status
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#	modified:   marte.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-The last line is the key phrase:
-"no changes added to commit".
-We have changed this file,
-but we haven't told Git we will want to save those changes
-(which we do with `git add`)
-much less actually saved them.
-Let's double-check our work using `git diff`,
-which shows us the differences between
-the current state of the file
-and the most recently saved version:
+A última linha,
+"no changes added to commit",
+é importante e nos avisa que nenhuma das mudanças feitas será salvo na próxima
+revisão. Embora tenhamos alterado o arquivo não informamos ao Git que queremos
+salvar essas mudanças (que iremos fazer utilizando `git add`).
+Para verificar as alterações nos arquivos utilizamos `git diff`, que irá mostrar
+a diferença entre o estado atual dos arquivo e a última revisão salva:
 
 ~~~ {.bash}
 $ git diff
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+ Frio e seco, mas tudo é da minha cor favorita.
++Duas luas pode ser um problema para o Lobisomem.
 ~~~
 
-The output is cryptic because
-it is actually a series of commands for tools like editors and `patch`
-telling them how to reconstruct one file given the other.
-If we can break it down into pieces:
+A saída parecer criptografada porque na verdade é uma série de comandos dizendo
+para programas como editores de texto e `patch` como reconstruir um arquivo
+partindo do outro. Podemos quebrar essa saída em algumas partes:
 
-1.  The first line tells us that Git is producing output similar to the Unix `diff` command
-    comparing the old and new versions of the file.
-2.  The second line tells exactly which revisions of the file
-    Git is comparing;
-    `df0654a` and `315bf3a` are unique computer-generated labels for those revisions.
-3.  The remaining lines show us the actual differences
-    and the lines on which they occur.
-    In particular,
-    the `+` markers in the first column show where we are adding lines.
+1.  A primeira linha informa que Git utilizou o comando `diff` para comparar a
+    versão antiga com a nova.
+2.  A segunda linha informa exatamente quais
+    [revisões](../../gloss.html#revision) Git está comparando:
+    `df0654a` e `315bf3a` são identificadores únicos gerados pelo computador
+    para essas duas revisões.
+3.  As linhas restantes mostram o que realmente mudou e as linhas
+    correspondentes. Em particular, o sinal `+` na primeira coluna indica onde
+    adicionamos novas linhas.
 
-Let's commit our change:
+Vamos salvar nossas mudanças:
 
 ~~~ {.bash}
-$ git commit -m "Concerns about Mars's moons on my furry friend"
+$ git commit -m "Preocupações decorrentes das luas de Marte"
 ~~~
 ~~~ {.output}
 # On branch master
@@ -352,120 +341,106 @@ $ git commit -m "Concerns about Mars's moons on my furry friend"
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#	modified:   marte.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-Whoops:
-Git won't commit because we didn't use `git add` first.
-Let's fix that:
+Hoops: Git não salvou uma nova revisão porque esquecemos de utilizar o comando
+`git add` primeiro. Vamos corrigir isso:
 
 ~~~ {.bash}
-$ git add mars.txt
-$ git commit -m "Concerns about Mars's moons on my furry friend"
+$ git add marte.txt
+$ git commit -m "Preocupações decorrentes das luas de Marte"
 ~~~
 ~~~ {.output}
-[master 34961b1] Concerns about Mars's moons on my furry friend
+[master 34961b1] Preocupações decorrentes das luas de Marte
  1 file changed, 1 insertion(+)
 ~~~
 
-Git insists that we add files to the set we want to commit
-before actually committing anything
-because we may not want to commit everything at once.
-For example,
-suppose we're adding a few citations to our supervisor's work
-to our thesis.
-We might want to commit those additions,
-and the corresponding addition to the bibliography,
-but *not* commit the work we're doing on the conclusion
-(which we haven't finished yet).
+Git insiste que adicionemos os arquivos ao grupo a ser salvo antes de realmente
+criarmos uma nova revisão porque podemos não querer incluir todas as mudanças de
+uma vez. Por exemplo, suponha que estejamos adicionando algumas citações ao
+trabalho de nosso orientador na nossa tese. Pode ser que desejamos ter uma
+versão em que adicionamos as citações e as referências bibliográficas mas
+**não** desejamos incluir as mudanças na conclusão uma vez que ainda não
+terminamos esta.
 
-To allow for this,
-Git has a special staging area
-where it keeps track of things that have been added to
-the current **change set**
-but not yet committed.
-`git add` puts things in this area,
-and `git commit` then copies them to long-term storage (as a commit):
+Para que isso seja possível, Git possui uma área temporária especial (em inglês
+denominada *staging area*) onde ele mantem o registro das alterações que foram
+adicionadas ao [conjunto](../../gloss.html#change-set) a ser utilizado para o
+próximo commit (que ainda não foi feito). `git add` coloca as modificações nessa
+área e `git commit` move a informação dessa área para o armazenamento de longo
+termo na forma de um commit.
 
 <img src="fig/git-staging-area.svg" alt="The Git Staging Area" />
 
-Let's watch as our changes to a file move from our editor
-to the staging area
-and into long-term storage.
-First,
-we'll add another line to the file:
+Vamos verificar como nossas mudanças são transmitidas do nosso editor para a
+área temporária e posteriormente para o armazenamento de longo termo. Primeiro,
+precisamos adicionar uma nova linha ao arquivo:
 
 ~~~ {.bash}
-$ nano mars.txt
-$ cat mars.txt
+$ nano marte.txt
+$ cat marte.txt
 ~~~
 ~~~ {.output}
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Frio e seco, mas tudo é da minha cor favorita.
+Duas luas pode ser um problema para o Lobisomem.
+Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 ~~~ {.bash}
 $ git diff
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
+ Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-So far, so good:
-we've added one line to the end of the file
-(shown with a `+` in the first column).
-Now let's put that change in the staging area
-and see what `git diff` reports:
+Até agora, tudo bem: adicionamos uma nova linha no final do arquivo
+(identificada com o sinal `+` na primeira coluna). Agora vamos colocar essa
+mudança na área temporária e verificar o que `git diff` informa:
 
 ~~~ {.bash}
-$ git add mars.txt
+$ git add marte.txt
 $ git diff
 ~~~
 
-There is no output:
-as far as Git can tell,
-there's no difference between what it's been asked to save permanently
-and what's currently in the directory.
-However,
-if we do this:
+Não existe saída pois até onde o Git consegue informar não existe diferença
+entre o que foi pedido para salvar permanentemente e o arquivos no repositório.
+Entretanto, se pedirmos:
 
 ~~~ {.bash}
 $ git diff --staged
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
+ Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-it shows us the difference between
-the last committed change
-and what's in the staging area.
-Let's save our changes:
+será mostrado a diferença entre o último commit e as mudanças na área
+temporária. Vamos salvar nossa mudança:
 
 ~~~ {.bash}
-$ git commit -m "Thoughts about the climate"
+$ git commit -m "Pensamentos sobre o clima"
 ~~~
 ~~~ {.output}
-[master 005937f] Thoughts about the climate
+[master 005937f] Pensamentos sobre o clima
  1 file changed, 1 insertion(+)
 ~~~
 
-check our status:
+e verificar o estado do repositório:
 
 ~~~ {.bash}
 $ git status
@@ -475,7 +450,7 @@ $ git status
 nothing to commit, working directory clean
 ~~~
 
-and look at the history of what we've done so far:
+e também no histórico do que foi feito até agora:
 
 ~~~ {.bash}
 $ git log
@@ -485,130 +460,116 @@ commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Thoughts about the climate
+    Pensamentos sobre o clima
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Concerns about Mars's moons on my furry friend
+    Preocupações decorrentes das luas de Marte
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Starting to think about Mars
+    Começando a pensar em Marte
 ~~~
 
-To recap, when we want to add changes to our repository,
-we first need to add the changed files to the staging area
-(`git add`) and then commit the staged changes to the
-repository (`git commit`):
+### Explorando o histórico
 
-<img src="fig/git-committing.svg" alt="The Git Commit Workflow" />
-
-### Exploring History
-
-If we want to see what we changed when,
-we use `git diff` again,
-but refer to old versions
-using the notation `HEAD~1`, `HEAD~2`, and so on:
+Se desejarmos ver o que alteramos, podemos utilizar `git diff` novamente, mas
+referindo-se a versões antigas utilizando a notação `HEAD~1`, `HEAD~2` e assim
+por diante:
 
 ~~~ {.bash}
-$ git diff HEAD~1 mars.txt
+$ git diff HEAD~1 marte.txt
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
+ Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 ~~~ {.bash}
-$ git diff HEAD~2 mars.txt
+$ git diff HEAD~2 marte.txt
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
++Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-In this way,
-we build up a chain of revisions.
-The most recent end of the chain is referred to as `HEAD`;
-we can refer to previous revisions using the `~` notation,
-so `HEAD~1` (pronounced "head minus one")
-means "the previous revision",
-while `HEAD~123` goes back 123 revisions from where we are now.
+Dessa forma, criamos uma sequência de revisões. A revisão mais recente nessa
+sequência é referenciada por `HEAD` e podemos referenciar revisões anteriores
+utilizando a notação com `~`, tal que `HEAD~1` (pronuncia-se "*head minus one*")
+significa a revisão anterior, enquanto `HEAD~123` retorna 123 revisões do ponto
+em que estamos agora.
 
-We can also refer to revisions using
-those long strings of digits and letters
-that `git log` displays.
-These are unique IDs for the changes,
-and "unique" really does mean unique:
-every change to any set of files on any machine
-has a unique 40-character identifier.
-Our first commit was given the ID
-f22b25e3233b4645dabd0d81e651fe074bd8e73b,
-so let's try this:
+Podemos também referenciar revisões anteriores utilizando a longa string de
+dígitos e letras impressas por `git log`. Essa longa string é única para as
+revisões e "única" realmente significa única: todo conjunto de mudanças em um
+conjunto de arquivos em cada máquina possui um identificador único de 40
+caracteres. O nosso primeiro commit possui como identificado
+f22b25e3233b4645dabd0d81e651fe074bd8e73b.
+Então vamos tentar:
 
 ~~~ {.bash}
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b marte.txt
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
++Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-That's the right answer,
-but typing random 40-character strings is annoying,
-so Git lets us use just the first few:
+A resposta do Git está correta mas digitar 40 caracteres aleatórios é
+inconveniente e por isso Git permite você digitar apenas os primeiros
+caracteres:
 
 ~~~ {.bash}
-$ git diff f22b25e mars.txt
+$ git diff f22b25e marte.txt
 ~~~
 ~~~ {.output}
-diff --git a/mars.txt b/mars.txt
+diff --git a/marte.txt b/mars.txt
 index df0654a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/marte.txt
++++ b/marte.txt
 @@ -1 +1,3 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Frio e seco, mas tudo é da minha cor favorita.
++Duas luas pode ser um problema para o Lobisomem.
++Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-### Recovering Old Versions
+### Recuperando versões anteriores
 
-All right:
-we can save changes to files and see what we've changed---how
-can we restore older versions of things?
-Let's suppose we accidentally overwrite our file:
+Até agora aprendemos como salvar alterações nos arquivos e verificar as
+alterações realizadas. Como podemos recuperar um arquivo de uma versão antiga?
+Vamos supor que acidentalmente sobre escrevemos um de nossos arquivos.
 
 ~~~ {.bash}
-$ nano mars.txt
-$ cat mars.txt
+$ nano marte.txt
+$ cat marte.txt
 ~~~
 ~~~ {.output}
-We will need to manufacture our own oxygen
+Teremos que produzir oxigênio para nosso consumo.
 ~~~
 
-`git status` now tells us that the file has been changed,
-but those changes haven't been staged:
+`git status` irá informar que os arquivo foi alterado e que as alterações não
+foram salvas na área temporária:
 
 ~~~ {.bash}
 $ git status
@@ -619,89 +580,83 @@ $ git status
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
-#	modified:   mars.txt
+#	modified:   marte.txt
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-We can put things back the way they were
-by using `git checkout`:
+Podemos desfazer as mudanças utilizando o comando `git checkout`:
+We can put things back the way they were by using `git checkout`:
 
 ~~~ {.bash}
-$ git checkout HEAD mars.txt
-$ cat mars.txt
+$ git checkout HEAD marte.txt
+$ cat marte.txt
 ~~~
 ~~~ {.output}
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Frio e seco, mas tudo é da minha cor favorita.
+Duas luas pode ser um problema para o Lobisomem.
+Mas a Múmia irá apreciar a falta de humidade.
 ~~~
 
-As you might guess from its name,
-`git checkout` checks out (i.e., restores) an old version of a file.
-In this case,
-we're telling Git that we want to recover the version of the file recorded in `HEAD`,
-which is the last saved revision.
-If we want to go back even further,
-we can use a revision identifier instead:
+Como você pode adivinhar pelo verbo utilizado, `git checkout` *checks out*
+(i.e., restaura) uma versão anterior do arquivo. Nesse caso, estamos dizendo
+para o Git que queremos recuperar a versão do arquivo presente em `HEAD`, que
+corresponde a última versão salva. Se você você resolver resolver voltar para
+uma versão mais antiga você deve utilizar o identificado da respectiva versão:
 
 ~~~ {.bash}
-$ git checkout f22b25e mars.txt
+$ git checkout f22b25e marte.txt
 ~~~
 
-It's important to remember that
-we must use the revision number that identifies the state of the repository
-*before* the change we're trying to undo.
-A common mistake is to use the revision number of
-the commit in which we made the change we're trying to get rid of.
-In the example below, we want retrieve the state from before the most
-recent commit (`HEAD~1`), which is revision `f22b25e`:
+É importante lembrar que
+devemos utilizar o identificador da revisão
+*anterior* ao estado que desejamos desfazer.
+Um erro comum é utilizar o identificador da
+revisão na qual as alterações indesejadas foram feitas.
+No exemplo abaixo, queremos recuperar o estado anterior
+ao commit mais recente (`HEAD~1`), cuja identificação é `f22b25e`:
 
 <img src="fig/git-checkout.svg" alt="Git Checkout" />
 
-The following diagram illustrates what the history of a file might look
-like (moving back from `HEAD`, the most recently committed version):
+O diagrama a seguir ilustra como o histórico de um arquivo deve ser
+(indo para antes de `HEAD`, a versão mais recente salva):
 
 <img src="fig/git-when-revisions-updated.svg" alt="When Git Updates Revision Numbers" />
 
-> ## Simplifying the Common Case {.callout}
+> ## Simplificando o Caso Comum {.callout}
 >
-> If you read the output of `git status` carefully,
-> you'll see that it includes this hint:
+> Se você tiver lido cuidadosamente a saída do comando `git status` você terá
+> notado que ele encontra a seguinte dica:
 >
 > ~~~ {.bash}
 > (use "git checkout -- <file>..." to discard changes in working directory)
 > ~~~
 >
-> As it says,
-> `git checkout` without a version identifier restores files to the state saved in `HEAD`.
-> The double dash `--` is needed to separate the names of the files being recovered
-> from the command itself:
-> without it,
-> Git would try to use the name of the file as the revision identifier.
+> Como ela diz, `git checkout` irá restaurar os arquivos para o estado salvo em
+> `HEAD`. O traço duplo, `--`, é necessário para separar o nome do arquivo a ser
+> recuperado do comando propriamente dito: sem o traço duplo, Git tentará
+> utilizar o nome do arquivo como o identificador da revisão.
 
-The fact that files can be reverted one by one
-tends to change the way people organize their work.
-If everything is in one large document,
-it's hard (but not impossible) to undo changes to the introduction
-without also undoing changes made later to the conclusion.
-If the introduction and conclusion are stored in separate files,
-on the other hand,
-moving backward and forward in time becomes much easier.
+O fato de que os arquivos pode ser recuperados um por um tende a mudar a forma
+como as pessoas organizam seu trabalho. Se todo o trabalho consiste de um grande
+documento, será difícil (mas não impossível) de desfazer alguma mudança sem
+também desfazer outras, por exemplo desfazer as alterações na introdução sem
+também desfazer as alterações feitas na conclusão. Se a introdução e conclusão
+estiverem salvas em arquivos separados será muito mais fácil desfazer apenas as
+alterações em um dos arquivos.
 
-### Ignoring Things
+### Ignorando Coisas
 
-What if we have files that we do not want Git to track for us,
-like backup files created by our editor
-or intermediate files created during data analysis.
-Let's create a few dummy files:
+Se tivermos arquivos que não desejamos serem monitorados pelo Git, por exemplo
+arquivos de backup criados pelo nosso editor ou arquivos intermediários criados
+durante a análise de dados. Vamos criar um exemplo bobo:
 
 ~~~ {.bash}
-$ mkdir results
-$ touch a.dat b.dat c.dat results/a.out results/b.out
+$ mkdir resultados
+$ touch a.dat b.dat c.dat resultados/a.out resultados/b.out
 ~~~
 
-and see what Git says:
+e verificar o que o Git diz:
 
 ~~~ {.bash}
 $ git status
@@ -714,16 +669,17 @@ $ git status
 #	a.dat
 #	b.dat
 #	c.dat
-#	results/
+#	resultados/
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
-Putting these files under version control would be a waste of disk space.
-What's worse,
-having them all listed could distract us from changes that actually matter,
-so let's tell Git to ignore them.
+Colocando esses arquivos sob controle de versão é um desperdício de memória em
+disco. Algo pior é que ter eles listados toda vez pode reduzir nossa atenção
+para as mudanças que realmente importam. Vamos então dizer para o Git ignorar
+alguns arquivos.
 
-We do this by creating a file in the root directory of our project called `.gitignore`.
+Fazemos isso criando um arquivo denominado `.gitignore` no diretório raiz do
+nosso projeto.
 
 ~~~ {.bash}
 $ nano .gitignore
@@ -731,16 +687,16 @@ $ cat .gitignore
 ~~~
 ~~~ {.output}
 *.dat
-results/
+resultados/
 ~~~
 
-These patterns tell Git to ignore any file whose name ends in `.dat`
-and everything in the `results` directory.
-(If any of these files were already being tracked,
-Git would continue to track them.)
+A primeira expressão no arquivo `.gitignore` diz para o Git ignorar todos os
+arquivos que terminam com `.dat` e a segunda expressão para ele ignorar todos os
+arquivos dentro do diretório `resultados`. (Se algum desses arquivos já está
+sendo monitorado pelo Git ele continuará sendo-o).
 
-Once we have created this file,
-the output of `git status` is much cleaner:
+Uma vez que criamos esse arquivo, a saída do comando `git status` é muito mais
+limpa.
 
 ~~~ {.bash}
 $ git status
@@ -754,15 +710,15 @@ $ git status
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
-The only thing Git notices now is the newly-created `.gitignore` file.
-You might think we wouldn't want to track it,
-but everyone we're sharing our repository with will probably want to ignore
-the same things that we're ignoring.
-Let's add and commit `.gitignore`:
+A única alteração que Git nota é a criação do arquivo `.gitignore`. Inicialmente
+você pode pensar que você não quer monitorar esse arquivo mas todas as pessoas
+que fizerem uso do repositório provavelmente irão querer ignorar os mesmos
+arquivos que ignoramos. Por esse motivo, vamos adicionar o arquivo `.gitignore`
+ao nosso controle de versão:
 
 ~~~ {.bash}
 $ git add .gitignore
-$ git commit -m "Add the ignore file"
+$ git commit -m "Adicionado gitignore"
 $ git status
 ~~~
 ~~~ {.output}
@@ -770,8 +726,8 @@ $ git status
 nothing to commit, working directory clean
 ~~~
 
-As a bonus,
-using `.gitignore` helps us avoid accidentally adding files to the repository that we don't want.
+Como um bônus, utilizar `.gitignore` irá ajudar nos a evitar de acidentadamente
+adicionar arquivos indesejados.
 
 ~~~ {.bash}
 $ git add a.dat
@@ -783,9 +739,9 @@ Use -f if you really want to add them.
 fatal: no files added
 ~~~
 
-If we really want to override our ignore settings,
-we can use `git add -f` to force Git to add something.
-We can also always see the status of ignored files if we want:
+Se realmente desejarmos desobedecer nossas configurações presentes no
+`.gitignore` precisamos informar isso ao Git utilizando `git add -f`. Também
+podemos verificar o status dos arquivos ignorados utilizando:
 
 ~~~ {.bash}
 $ git status --ignored
@@ -798,31 +754,30 @@ $ git status --ignored
 #        a.dat
 #        b.dat
 #        c.dat
-#        results/
+#        resultados/
 
 nothing to commit, working directory clean
 ~~~
 
-> ## `bio` Repository {.challenge}
+> ## Repositório `bio` {.challenge}
 >
-> Create a new Git repository on your computer called `bio`.
-> Write a three-line biography for yourself in a file called `me.txt`,
-> commit your changes,
-> then modify one line and add a fourth and display the differences
-> between its updated state and its original state.
+> Crie um novo repositório Git no seu computador chamado `bio`. Escreva uma versão
+> curta da sua bibliografia com três linhas no arquivo `me.txt`, salva suas
+> mudanças. Depois, modifique uma das linhas e adicione uma quarta linha, mostre
+> a alteração feita e desfaça-a.
 
-> ## Places to Create Git Repositories {.challenge}
+> ## Onde posso criar meu repositório? {.challenge}
 >
-> The following sequence of commands creates one Git repository inside another:
-> 
+> A seguinte sequencia de comandos cira um repositório Git dentro de outro:
+>
 > ~~~ {.bash}
-> cd           # return to home directory
-> mkdir alpha  # make a new directory alpha
-> cd alpha     # go into alpha
-> git init     # make the alpha directory a Git repository
-> mkdir beta   # make a sub-directory alpha/beta
-> cd beta      # go into alpha/beta
-> git init     # make the beta sub-directory a Git repository
+> cd           # retorna para sua pasta de usuário
+> mkdir alpha  # cria um novo repositório
+> cd alpha     # muda o diretório atual para o diretório recém criado
+> git init     # transforma o diretório recém criado em um repositório Git
+> mkdir beta   # cria um subdiretório
+> cd beta      # muda o diretório atual para o subdiretório recém criado
+> git init     # transforma o subdiretório em um repositório Git
 > ~~~
-> 
-> Why is it a bad idea to do this?
+>
+> Por que utilizar um repositório Git dentro de outro é uma péssima idéia?

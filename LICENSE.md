@@ -1,84 +1,79 @@
 ---
 layout: page
-title: Licenses
+title: Licença
 ---
-### Instructional Material
+### Material
 
-All Software Carpentry instructional material is made available under
-the [Creative Commons Attribution license][cc-by-human]. The following
-is a human-readable summary of (and not a substitute for) the [full
-legal text of the CC BY 4.0 license][cc-by-legal].
+Todo o material da Software Carpentry é disponibilizado sob
+a [licença Creative Commons Atribuição 4.0 Internacional][cc-by-human].
+A seguir encontra-se um sumário do
+[texto legal completo da licença Creative Commons Atribuição 4.0 Internacional][cc-by-legal]
+e não é um substituto para esse.
 
-You are free:
+Você é livre para:
 
-* to **Share**---copy and redistribute the material in any medium or format
-* to **Adapt**---remix, transform, and build upon the material
+*   **Compartilhar**---copiar e redistribuir o material em qualquer mídia ou
+    formato
+*   **Adaptar**---remixar, transformar, e criar a partir do material
 
-for any purpose, even commercially.
+para qualquer fim, mesmo que comercial.
 
-The licensor cannot revoke these freedoms as long as you follow the
-license terms.
+O licenciante não pode revogar estes direitos desde que você respeite os
+seguintes termos:
 
-Under the following terms:
+*   **Atribuição**---Você deve dar crédito
+    (mencionando que seu trabalho é derivado de um trabalho
+    cujos direitos são da Software Carpentry e,
+    quando possível, incluir um link para http://software-carpentry.org/),
+    incluir um [link para a licença utilizada][cc-by-human],
+    e indicar se alterações foram feitas.
+    Você pode fazê-lo de qualquer maneira razoável,
+    mas de nenhuma maneira que sugira o licenciante aprove seu uso.
 
-* **Attribution**---You must give appropriate credit (mentioning that
-  your work is derived from work that is Copyright © Software
-  Carpentry and, where practical, linking to
-  http://software-carpentry.org/), provide a [link to the
-  license][cc-by-human], and indicate if changes were made. You may do
-  so in any reasonable manner, but not in any way that suggests the
-  licensor endorses you or your use.
+**Sem restrições adicionais**---Você não pode aplicar termos jurídicos ou
+medidas de caráter tecnológico que restrinjam legalmente
+outros de fazerem algo que a licença permita.
 
-**No additional restrictions**---You may not apply legal terms or
-technological measures that legally restrict others from doing
-anything the license permits.  With the understanding that:
+Avisos:
 
-Notices:
-
-* You do not have to comply with the license for elements of the
-  material in the public domain or where your use is permitted by an
-  applicable exception or limitation.
-* No warranties are given. The license may not give you all of the
-  permissions necessary for your intended use. For example, other
-  rights such as publicity, privacy, or moral rights may limit how you
-  use the material.
+*   Você não tem de cumprir com os termos da licença relativamente a elementos
+    do material que estejam no domínio público ou cuja utilização seja permitida
+    por uma exceção ou limitação que seja aplicável.
+*   Não são dadas quaisquer garantias. A licença pode não lhe dar todas as
+    autorizações necessárias para o uso pretendido. Por exemplo, outros
+    direitos, tais como direitos de imagem, de privacidade ou direitos
+    morais, podem limitar o uso do material.
 
 ### Software
 
-Except where otherwise noted, the example programs and other software
-provided by Software Carpentry are made available under the
-[OSI](http://opensource.org)-approved
-[MIT license](http://opensource.org/licenses/mit-license.html).
+Exceto onde indicado o contrário,
+exemplos de programas e outros softwares
+fornecidos pela Software Carpentry são disponibilizados
+sob a [licença MIT](http://opensource.org/licenses/mit-license.html).
+que é aprovada pela [OSI](http://opensource.org).
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+A permissão é concedida, a título gratuito, para qualquer pessoa que obtenha uma
+cópia deste software e arquivos de documentação associados (o "Software"), para
+lidar com o Software sem restrição, incluindo, sem limitação dos direitos de
+uso, copiar, modificar, mesclar , publicar, distribuir, sublicenciar e / ou
+vender cópias do Software, e para permitir que as pessoas às quais o Software é
+fornecido a fazê-lo, mediante as seguintes condições:
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+O aviso de direito autoral acima e este aviso de permissão devem ser incluídos
+em todas as cópias ou partes substanciais do Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-### Other Material
-
-Our [code of conduct](CODE_OF_CONDUCT.html) is taken from
-[this site](https://github.com/Bantik/contributor_covenant/blob/master/LICENSE),
-and is made available under the same MIT License as our software.
+O Software é fornecido "como está", sem qualquer tipo de garantia, expressa ou
+implícita, incluindo mas não se limitando a garantias de comerciabilidade,
+adequação a uma finalidade específica e não violação. Em nenhum caso os autores
+ou os detentores dos direitos autorais se responsabilizarão por qualquer
+reclamação, danos ou qualquer outra responsabilidade, seja em razão de contrato,
+ato ilícito ou de outra forma, resultantes de ou em conexão com o software ou a
+utilização ou outras negociações no Software.
 
 ### Trademark
 
-"Software Carpentry" and the Software Carpentry logo are registered
-trademarks of Software Carpentry, Ltd.
+"Software Carpentry" e o logo Software Carpentry são marcas registradas
+de Software Carpentry, Ltd.
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode

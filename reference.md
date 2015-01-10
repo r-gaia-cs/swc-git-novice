@@ -1,115 +1,121 @@
 ---
 layout: page
-title: Version Control with Git
-subtitle: Reference
+title: Introdução ao Controle de Versão com Git
+subtitle: Referência
 ---
-## [A Better Kind of Backup](01-backup.html)
+## [Uma Melhor Solução de Backup](01-backup.html)
 
-*   Use `git config` to configure
-    a user name, email address, editor, and other preferences once per machine.
-*   `git init` initializes a repository.
-*   `git status` shows the status of a repository.
-*   Files can be stored in a project's working directory (which users see),
-    the staging area (where the next commit is being built up)
-    and the local repository (where snapshots are permanently recorded).
-*   `git add` puts files in the staging area.
-*   `git commit` creates a snapshot of the staging area in the local repository.
-*   Always write a log message when committing changes.
-*   `git diff` displays differences between revisions.
-*   `git checkout` recovers old versions of files.
-*   The `.gitignore` file tells Git what files to ignore.
+*   Usar `git config` para configurar
+    o nome de usuário, endereço de email, editor e outras preferências em uma máquina.
+*   `git init` inicializa um repositório.
+*   `git status` mostra o estado de um repositório.
+*   Arquivos podem ser armazenados no diretório de trabalho do projeto (que o usuário visualiza),
+    na área intermediária (onde a próxima versão está sendo construída)
+    e no repositório local (onde snapshots são salvos permanentemente).
+*   `git add` move os arquivos para a área temporária.
+*   `git commit` cria um novo snapshot da área temporária no repositório local.
+*   Sempre escreva uma mensagem descritiva quando criar uma nova revisão.
+*   `git diff` mostra a diferença entre revisões.
+*   `git checkout` recupera uma versão anterior.
+*   O arquivo `.gitignore` informa o Git quais arquivos devem ser ignorados.
 
 ## [Collaborating](02-collab.html)
 
-*   A local Git repository can be connected to one or more remote repositories.
-*   Use the HTTPS protocol to connect to remote repositories until you have learned how to set up SSH.
-*   `git push` copies changes from a local repository to a remote repository.
-*   `git pull` copies changes from a remote repository to a local repository.
-*   `git clone` copies a remote repository to create a local repository
-    with a remote called `origin` automatically set up.
+*   Um repositório Git local pode ser conectado com um ou mais repositórios remotos.
+*   Utilize o protocolo HTTPS para comunicar-se com um repositório remoto até que você aprenda como configurar autenticação via SSH.
+*   `git push` copia as mudanças de um repositório local para um repositório remoto.
+*   `git pull` copia as mudanças de um repositório remoto para um repositório local.
+*   `git clone` copia um repositório remoto para criar um repositório local
+    que possui um repositório remoto chamado de `origin` automaticamente configurado.
 
 ## [Conflicts](03-conflict.html)
 
-*   Conflicts occur when two or more people change the same file(s) at the same time.
-*   The version control system does not allow people to blindly overwrite each other's changes.
-    Instead, it highlights conflicts so that they can be resolved.
+*   Conflitos ocorrem quando duas ou mais pessoas alteram o mesmo arquivo ao mesmo tempo.
+*   Um sistema de controle de versão não deixa um usuário sobre-escrever as alterações de um outro usuário cegamente.
+    Ao contrário, ele destaca os conflitos para que estes possam ser resolvidos.
 
-## [Open Science](04-open.html)
+## [Ciência Aberta](04-open.html)
 
-*   Open scientific work is more useful and more highly cited than closed.
-*   People who incorporate GPL'd software into theirs must make theirs open;
-    most other open licenses do not require this.
-*   The Creative Commons family of licenses allow people to mix and match
-    requirements and restrictions on attribution,
-    creation of derivative works,
-    further sharing,
-    and commercialization.
-*   People who are not lawyers should not try to write licenses from scratch.
-*   Projects can be hosted on university servers,
-    on personal domains,
-    or on public forges.
-*   Rules regarding intellectual property and storage of sensitive information apply
-    no matter where code and data are hosted.
+*   Trabalhos científicos são mais úteis e mais citados que trabalhos
+    científicos fechados.
+*   Pessoas que incorporam software GPL em seus softwares devem torná-los
+    abertos utilizando a GPL;
+    a maioria das outras licenças não requer isso.
+*   A família de licenças Creative Commons permite que pessoas misturem
+    requerimentos e restrições de atribuição,
+    criação de trabalhos derivados,
+    compartilhamento,
+    e comercialização.
+*   Pessoas que não são advogados não devem tentar escrever licenças começando do zero.
+*   Projetos podem ser hospedados nos servidores da universidade,
+    em um domínio pessoal,
+    ou em repositórios públicos.
+*   Regras relacionadas com a propriedade intelectual e armazenamento de informações sensíveis são válidas
+    independentemente de onde o código e o dado são hospedados.
 
-## Glossary
+## Glossário
 
-change set
-:   A group of changes to one or more files
-    that are [committed](#commit) to a [version control](#version-control) [repository](#repository)
-    in a single operation.
+conjunto de alterações
+:   Um grupo de alterações em um ou mais arquivos
+    que são [salvos](#commit) em um [repositório](#repositório) sob [controle de versão](controle-de-versão)
+    em uma única operação.
 
 commit
-:   To record the current state of a set of files (a [change set](#changeset))
-    in a [version control](#version-control) [repository](#repository).
-    If a commit contains changes to multiple files,
-    all of the changes are recorded together.
+:   Ação de salvar o estado atual de um conjunto de arquivos
+    (um [conjunto de alterações](#conjunto-de-alterações))
+    em um [repositório](#repositório) sob [controle de versão](#controle-de-versão).
+    Se um commit contem mudanças em vários arquivos,
+    todas as alterações são salvas em conjunto.
 
-conflict
-:   A change made by one user of a [version control system](#version-control)
-    that is incompatible with changes made by other users.
-    Helping users [resolve](#resolve) conflicts
-    is one of version control's major tasks.
+conflito
+:   Uma alteração feita por um usuário do [sistema de controle de versão](#controle-de-versão)
+    que é incompatível com as alterações feitas por outros usuários.
+    Auxiliar usuários a [resolver](#resolver) conflitos
+    é uma das maiores tarefas de um sistema de controle de versão.
 
 HTTP
-:   The Hypertext Transfer [Protocol](#protocol) used for sharing web pages and other data
-    on the World Wide Web.
+:   O [Protocolo](#protocolo) Hypertext Transfer usado para compartilhar páginas da internet
+    e outros dados
+    na World Wide Web.
 
-infective license
-:   A license such as the [GPL](http://opensource.org/licenses/GPL-3.0)
-    that compels people who incorporate material into their own work
-    to place similar sharing requirements on it.
+licenças infecciosas
+:   Uma licença como a [GPL](http://opensource.org/licenses/GPL-3.0)
+    que obriga as pessoas que incorporam material sob essa licença em seu trabalho
+    a utilizar a mesma licença ou uma com requerimentos similares.
 
 merge
-:   (a repository):
-    To reconcile two sets of changes to a [repository](#repository).
+:   (um repositório):
+    Reconciliar dois conjuntos de alterações em um [repositório](#repositório).
 
-protocol
-:   A set of rules that define how one computer communicates with another.
-    Common protocols on the Internet include [HTTP](#http) and [SSH](#ssh).
+protocolo
+:   Um conjunto de regras que definem como um computador se comunica com outro.
+    Protocolos populares na Internet incluem [HTTP](#http) e [SSH](#ssh).
 
-remote
-:   A version control [repository](#repository) other than the current one
-    that the current one is somehow connected to or mirroring.
+remoto
+:   Um [repositório](#repositório) sob controle de versão que não o atual
+    que de alguma forma é um espelho ou está conectado com o atual.
 
-repository
-:   A storage area where a [version control](#version-control) system
-    stores old [revisions](#revision) of files and information about who changed what, when.
+repositório
+:   Uma área de armazenamento onde um sistema de [controle de versão](#controle-de-versão)
+    armazena [revisões](#revisão) anteriores dos arquivos
+    e informações sobre quem, quando e onde criou uma nova [revisão](#revisão).
 
-resolve
-:   To eliminate the [conflicts](#conflict) between two or more incompatible changes to a file or set of files
-    being managed by a [version control](#version-control) system.
+resolver
+:   Eliminar os [conflitos](#conflito) entre duas ou mais alterações incompatíveis
+    em um arquivo ou um conjunto de arquivos
+    que estão sendo gerenciados por um sistema de [controle de versão](#controle-de-versão).
 
-revision
-:   A recorded state of a [version control](#version-control) [repository](#repository).
+revisão
+:   Um registro do estado de um [repositório](#repositório) de [controle de versão](#controle-de-versão).
 
 SSH
-:   The Secure Shell [protocol](#protocol) used for secure communication between computers.
+:   O [protocolo](#protocolo) Secure Shell utilizado para a comunicação segura entre computadores.
 
 timestamp
-:   A record of when a particular event occurred.
+:   O registro de quando um evento em particular ocorreu.
 
-version control
-:   A tool for managing changes to a set of files.
-    Each set of changes creates a new [revision](#revision) of the files;
-    the version control system allows users to recover old revisions reliably,
-    and helps manage conflicting changes made by different users.
+controle de versão
+:   Uma ferramenta para gerenciar alterações em um conjunto de arquivos.
+    Cada conjunto de mudanças cria uma nova [revisão](#revisão) dos arquivos;
+    o sistema de controle de versão permite os usuários recuperarem versões anteriores de forma segura,
+    e ajuda a gerenciar conflitos entre alterações feitas por diferente usuários.

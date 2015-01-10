@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: Version Control with Git</title>
+    <title>Software Carpentry: Introdução ao Controle de Versão com Git</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,86 +25,86 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title">Version Control with Git</h1>
-          <h2 class="subtitle">Reference</h2>
-<h2 id="a-better-kind-of-backup"><a href="01-backup.html">A Better Kind of Backup</a></h2>
+          <h1 class="title">Introdução ao Controle de Versão com Git</h1>
+          <h2 class="subtitle">Referência</h2>
+<h2 id="uma-melhor-solução-de-backup"><a href="01-backup.html">Uma Melhor Solução de Backup</a></h2>
 <ul>
-<li>Use <code>git config</code> to configure a user name, email address, editor, and other preferences once per machine.</li>
-<li><code>git init</code> initializes a repository.</li>
-<li><code>git status</code> shows the status of a repository.</li>
-<li>Files can be stored in a project's working directory (which users see), the staging area (where the next commit is being built up) and the local repository (where snapshots are permanently recorded).</li>
-<li><code>git add</code> puts files in the staging area.</li>
-<li><code>git commit</code> creates a snapshot of the staging area in the local repository.</li>
-<li>Always write a log message when committing changes.</li>
-<li><code>git diff</code> displays differences between revisions.</li>
-<li><code>git checkout</code> recovers old versions of files.</li>
-<li>The <code>.gitignore</code> file tells Git what files to ignore.</li>
+<li>Usar <code>git config</code> para configurar o nome de usuário, endereço de email, editor e outras preferências em uma máquina.</li>
+<li><code>git init</code> inicializa um repositório.</li>
+<li><code>git status</code> mostra o estado de um repositório.</li>
+<li>Arquivos podem ser armazenados no diretório de trabalho do projeto (que o usuário visualiza), na área intermediária (onde a próxima versão está sendo construída) e no repositório local (onde snapshots são salvos permanentemente).</li>
+<li><code>git add</code> move os arquivos para a área temporária.</li>
+<li><code>git commit</code> cria um novo snapshot da área temporária no repositório local.</li>
+<li>Sempre escreva uma mensagem descritiva quando criar uma nova revisão.</li>
+<li><code>git diff</code> mostra a diferença entre revisões.</li>
+<li><code>git checkout</code> recupera uma versão anterior.</li>
+<li>O arquivo <code>.gitignore</code> informa o Git quais arquivos devem ser ignorados.</li>
 </ul>
 <h2 id="collaborating"><a href="02-collab.html">Collaborating</a></h2>
 <ul>
-<li>A local Git repository can be connected to one or more remote repositories.</li>
-<li>Use the HTTPS protocol to connect to remote repositories until you have learned how to set up SSH.</li>
-<li><code>git push</code> copies changes from a local repository to a remote repository.</li>
-<li><code>git pull</code> copies changes from a remote repository to a local repository.</li>
-<li><code>git clone</code> copies a remote repository to create a local repository with a remote called <code>origin</code> automatically set up.</li>
+<li>Um repositório Git local pode ser conectado com um ou mais repositórios remotos.</li>
+<li>Utilize o protocolo HTTPS para comunicar-se com um repositório remoto até que você aprenda como configurar autenticação via SSH.</li>
+<li><code>git push</code> copia as mudanças de um repositório local para um repositório remoto.</li>
+<li><code>git pull</code> copia as mudanças de um repositório remoto para um repositório local.</li>
+<li><code>git clone</code> copia um repositório remoto para criar um repositório local que possui um repositório remoto chamado de <code>origin</code> automaticamente configurado.</li>
 </ul>
 <h2 id="conflicts"><a href="03-conflict.html">Conflicts</a></h2>
 <ul>
-<li>Conflicts occur when two or more people change the same file(s) at the same time.</li>
-<li>The version control system does not allow people to blindly overwrite each other's changes. Instead, it highlights conflicts so that they can be resolved.</li>
+<li>Conflitos ocorrem quando duas ou mais pessoas alteram o mesmo arquivo ao mesmo tempo.</li>
+<li>Um sistema de controle de versão não deixa um usuário sobre-escrever as alterações de um outro usuário cegamente. Ao contrário, ele destaca os conflitos para que estes possam ser resolvidos.</li>
 </ul>
-<h2 id="open-science"><a href="04-open.html">Open Science</a></h2>
+<h2 id="ciência-aberta"><a href="04-open.html">Ciência Aberta</a></h2>
 <ul>
-<li>Open scientific work is more useful and more highly cited than closed.</li>
-<li>People who incorporate GPL'd software into theirs must make theirs open; most other open licenses do not require this.</li>
-<li>The Creative Commons family of licenses allow people to mix and match requirements and restrictions on attribution, creation of derivative works, further sharing, and commercialization.</li>
-<li>People who are not lawyers should not try to write licenses from scratch.</li>
-<li>Projects can be hosted on university servers, on personal domains, or on public forges.</li>
-<li>Rules regarding intellectual property and storage of sensitive information apply no matter where code and data are hosted.</li>
+<li>Trabalhos científicos são mais úteis e mais citados que trabalhos científicos fechados.</li>
+<li>Pessoas que incorporam software GPL em seus softwares devem torná-los abertos utilizando a GPL; a maioria das outras licenças não requer isso.</li>
+<li>A família de licenças Creative Commons permite que pessoas misturem requerimentos e restrições de atribuição, criação de trabalhos derivados, compartilhamento, e comercialização.</li>
+<li>Pessoas que não são advogados não devem tentar escrever licenças começando do zero.</li>
+<li>Projetos podem ser hospedados nos servidores da universidade, em um domínio pessoal, ou em repositórios públicos.</li>
+<li>Regras relacionadas com a propriedade intelectual e armazenamento de informações sensíveis são válidas independentemente de onde o código e o dado são hospedados.</li>
 </ul>
-<h2 id="glossary">Glossary</h2>
+<h2 id="glossário">Glossário</h2>
 <dl>
-<dt><span id="change-set">change set</span></dt>
-<dd>A group of changes to one or more files that are <a href="#commit">committed</a> to a <a href="#version-control">version control</a> <a href="#repository">repository</a> in a single operation.
+<dt><span id="conjunto-de-alterações">conjunto de alterações</span></dt>
+<dd>Um grupo de alterações em um ou mais arquivos que são <a href="#commit">salvos</a> em um <a href="#repositório">repositório</a> sob <a href="controle-de-versão">controle de versão</a> em uma única operação.
 </dd>
 <dt><span id="commit">commit</span></dt>
-<dd>To record the current state of a set of files (a <a href="#changeset">change set</a>) in a <a href="#version-control">version control</a> <a href="#repository">repository</a>. If a commit contains changes to multiple files, all of the changes are recorded together.
+<dd>Ação de salvar o estado atual de um conjunto de arquivos (um <a href="#conjunto-de-alterações">conjunto de alterações</a>) em um <a href="#repositório">repositório</a> sob <a href="#controle-de-versão">controle de versão</a>. Se um commit contem mudanças em vários arquivos, todas as alterações são salvas em conjunto.
 </dd>
-<dt><span id="conflict">conflict</span></dt>
-<dd>A change made by one user of a <a href="#version-control">version control system</a> that is incompatible with changes made by other users. Helping users <a href="#resolve">resolve</a> conflicts is one of version control's major tasks.
+<dt><span id="conflito">conflito</span></dt>
+<dd>Uma alteração feita por um usuário do <a href="#controle-de-versão">sistema de controle de versão</a> que é incompatível com as alterações feitas por outros usuários. Auxiliar usuários a <a href="#resolver">resolver</a> conflitos é uma das maiores tarefas de um sistema de controle de versão.
 </dd>
 <dt><span id="http">HTTP</span></dt>
-<dd>The Hypertext Transfer <a href="#protocol">Protocol</a> used for sharing web pages and other data on the World Wide Web.
+<dd>O <a href="#protocolo">Protocolo</a> Hypertext Transfer usado para compartilhar páginas da internet e outros dados na World Wide Web.
 </dd>
-<dt><span id="infective-license">infective license</span></dt>
-<dd>A license such as the <a href="http://opensource.org/licenses/GPL-3.0">GPL</a> that compels people who incorporate material into their own work to place similar sharing requirements on it.
+<dt><span id="licenças-infecciosas">licenças infecciosas</span></dt>
+<dd>Uma licença como a <a href="http://opensource.org/licenses/GPL-3.0">GPL</a> que obriga as pessoas que incorporam material sob essa licença em seu trabalho a utilizar a mesma licença ou uma com requerimentos similares.
 </dd>
 <dt><span id="merge">merge</span></dt>
-<dd>(a repository): To reconcile two sets of changes to a <a href="#repository">repository</a>.
+<dd>(um repositório): Reconciliar dois conjuntos de alterações em um <a href="#repositório">repositório</a>.
 </dd>
-<dt><span id="protocol">protocol</span></dt>
-<dd>A set of rules that define how one computer communicates with another. Common protocols on the Internet include <a href="#http">HTTP</a> and <a href="#ssh">SSH</a>.
+<dt><span id="protocolo">protocolo</span></dt>
+<dd>Um conjunto de regras que definem como um computador se comunica com outro. Protocolos populares na Internet incluem <a href="#http">HTTP</a> e <a href="#ssh">SSH</a>.
 </dd>
-<dt><span id="remote">remote</span></dt>
-<dd>A version control <a href="#repository">repository</a> other than the current one that the current one is somehow connected to or mirroring.
+<dt><span id="remoto">remoto</span></dt>
+<dd>Um <a href="#repositório">repositório</a> sob controle de versão que não o atual que de alguma forma é um espelho ou está conectado com o atual.
 </dd>
-<dt><span id="repository">repository</span></dt>
-<dd>A storage area where a <a href="#version-control">version control</a> system stores old <a href="#revision">revisions</a> of files and information about who changed what, when.
+<dt><span id="repositório">repositório</span></dt>
+<dd>Uma área de armazenamento onde um sistema de <a href="#controle-de-versão">controle de versão</a> armazena <a href="#revisão">revisões</a> anteriores dos arquivos e informações sobre quem, quando e onde criou uma nova <a href="#revisão">revisão</a>.
 </dd>
-<dt><span id="resolve">resolve</span></dt>
-<dd>To eliminate the <a href="#conflict">conflicts</a> between two or more incompatible changes to a file or set of files being managed by a <a href="#version-control">version control</a> system.
+<dt><span id="resolver">resolver</span></dt>
+<dd>Eliminar os <a href="#conflito">conflitos</a> entre duas ou mais alterações incompatíveis em um arquivo ou um conjunto de arquivos que estão sendo gerenciados por um sistema de <a href="#controle-de-versão">controle de versão</a>.
 </dd>
-<dt><span id="revision">revision</span></dt>
-<dd>A recorded state of a <a href="#version-control">version control</a> <a href="#repository">repository</a>.
+<dt><span id="revisão">revisão</span></dt>
+<dd>Um registro do estado de um <a href="#repositório">repositório</a> de <a href="#controle-de-versão">controle de versão</a>.
 </dd>
 <dt><span id="ssh">SSH</span></dt>
-<dd>The Secure Shell <a href="#protocol">protocol</a> used for secure communication between computers.
+<dd>O <a href="#protocolo">protocolo</a> Secure Shell utilizado para a comunicação segura entre computadores.
 </dd>
 <dt><span id="timestamp">timestamp</span></dt>
-<dd>A record of when a particular event occurred.
+<dd>O registro de quando um evento em particular ocorreu.
 </dd>
-<dt><span id="version-control">version control</span></dt>
-<dd>A tool for managing changes to a set of files. Each set of changes creates a new <a href="#revision">revision</a> of the files; the version control system allows users to recover old revisions reliably, and helps manage conflicting changes made by different users.
+<dt><span id="controle-de-versão">controle de versão</span></dt>
+<dd>Uma ferramenta para gerenciar alterações em um conjunto de arquivos. Cada conjunto de mudanças cria uma nova <a href="#revisão">revisão</a> dos arquivos; o sistema de controle de versão permite os usuários recuperarem versões anteriores de forma segura, e ajuda a gerenciar conflitos entre alterações feitas por diferente usuários.
 </dd>
 </dl>
         </div>

@@ -1,59 +1,61 @@
 ---
 layout: page
-title: Version Control with Git
+title: Introdução ao Controle de Versão com Git
 ---
-Wolfman and Dracula have been hired by Universal Missions
-(a space services spinoff from Euphoric State University)
-to investigate if it is possible to send their next planetary lander to Mars.
-They want to be able to work on the plans at the same time,
-but they have run into problems doing this in the past.
-If they take turns,
-each one will spend a lot of time waiting for the other to finish,
-but if they work on their own copies and email changes back and forth
-things will be lost, overwritten, or duplicated.
+Lobisomem e Drácula foram contratados pelo Universal Missions
+(uma agência de serviços espaciais da Euphoric State University)
+para descobrir onde a companhia deveria enviar sue próximo robô explorador.
+Eles desejam trabalhar nos planos ao mesmo tempo
+mas tiveram problemas ao fazer isso no passado.
+Se eles trabalharem em turnos,
+cada um deles irá gastar muito tempo esperando o outro terminar
+mas se eles trabalharem em sua cópia e trocarem emails com as mudanças
+alguma coisa acabará se perdendo, sendo reescrita ou duplicada.
 
-A colleague suggests using **version control** to manage their work.
-Version control is better than mailing files back and forth because:
+A solução é eles utilizarem [controle de versão](reference.html#controle-de-versão)
+para gerenciar o trabalho.
+Controle de versão é melhor que trocar arquivos por email pois:
 
-*   Nothing that is committed to version control is ever lost.
-    This means it can be used like the "undo" feature in an editor,
-    and since all old versions of files are saved
-    it's always possible to go back in time to see exactly who wrote what on a particular day,
-    or what version of a program was used to generate a particular set of results.
-*   It keeps a record of who made what changes when,
-    so that if people have questions later on,
-    they know who to ask.
-*   It's hard (but not impossible) to accidentally overlook or overwrite someone's changes:
-    the version control system automatically notifies users
-    whenever there's a conflict between one person's work and another's.
+*   Nada que é salva no controle de versão pode ser perdido.
+    Isso significa que ele pode ser utilizado como a ferramenta "desfazer" de um
+    editor de texto e como todas as versões anteriores dos arquivos estão salvas
+    sempre é possível voltar no tempo para saber quem escreveu o que em um dia
+    particular ou que versão de um programa foi utilizado para gerar um
+    resultado.
+*   Ele mantem um registro de quem fez cada mudança e quando ela foi feita e
+    assim, se alguém tiver perguntas depois saberá a quem perguntar.
+*   É difícil (mas não impossível) de acidentalmente sobrescrever as mudanças
+    de alguém: o sistema de controle de versão automaticamente avisa o usuário
+    quando existe um conflito entre o trabalho de duas ou mais pessoas.
 
-Version control is the lab notebook of the digital world:
-it's what professionals use to keep track of what they've done
-and to collaborate with other people.
-Every large software development project relies on it,
-and most programmers use it for their small jobs as well.
-And it isn't just for software:
-books (like this one),
-papers,
-small data sets,
-and anything that changes over time or needs to be shared
-can and should be stored in a version control system.
+Controle de versão é o caderno de laboratório do mundo digital:
+é o que profissionais utilizam para manter registro do que fizeram
+e para colaborar com outras pessoas.
+Todo grande projeto de desenvolvimento de software depende dele,
+e vários programadores também o utilizam para seus pequenos projetos.
+E ele não é utilizado apenas para software:
+livros (como esse),
+artigos,
+pequenos conjuntos de dados,
+e qualquer coisa que é modificado ao longo do tempo ou precisa ser compartilhada
+pode e deveria ser armazenado em um sistema para controle de versão.
 
-> ## Prerequisites {.prereq}
+> ## Pré-requisitos {.prereq}
 >
-> A short paragraph describing what learners need to know
-> before tackling this lesson.
+> Nessa lição utilizamos Git pela linha de comando
+> e por isso espera-se uma experiência prévia com ela
+> *embora isso não seja obrigatório*.
 
-## Topics
+## Tópicos
 
-1.  [A Better Kind of Backup](01-backup.html)
-2.  [Collaborating](02-collab.html)
-3.  [Conflicts](03-conflict.html)
-4.  [Open Science](04-open.html)
+1.  [Uma melhor forma de backup](01-backup.html)
+2.  [Colaborando](02-collab.html)
+3.  [Conflitos](-3-conflict.html)
+4.  [Ciência Aberta](04-open.html)
 
-## Other Resources
+## Outros recursos
 
-*   [Motivation](motivation.html)
-*   [Reference](reference.html)
-*   [Discussion](discussion.html)
-*   [Instructor's Guide](instructors.html)
+*   [Motivação](motivation.html)
+*   [Referência](reference.html)
+*   [Discussão](discussion.html)
+*   [Guia do Instrutor](instructors.html)
