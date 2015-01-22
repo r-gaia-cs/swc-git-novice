@@ -759,7 +759,7 @@ $ git status --ignored
 nothing to commit, working directory clean
 ~~~
 
-> ## Repositório `bio` {.challenge}
+> ## Repositório bio {.challenge}
 >
 > Crie um novo repositório Git no seu computador chamado `bio`. Escreva uma versão
 > curta da sua bibliografia com três linhas no arquivo `me.txt`, salva suas
