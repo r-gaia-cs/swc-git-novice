@@ -51,7 +51,7 @@
 <li><p>Version control is usually not the first subject in a workshop, so get learners to create a GitHub account after the session before.</p></li>
 <li><p>When giving instructions, be very clear which files learners are to edit: it is common for them to (for example) edit the instructor's biography rather than their own, or to use the instructor's user ID when committing.</p></li>
 <li><p>Be equally clear <em>when</em> they are to edit things: it's also common for someone to edit the file the instructor is editing and commit changes while the instructor is explaining what's going on, so that a conflict occurs when the instructor comes to commit the file.</p></li>
-<li><p>If some learners are using Windows, there will inevitably be issues merging files with different line endings. (Even if everyone's on some flavor of Unix, different editors may or may not add a newline to the last line of a file.) Take a moment to explain these issues, since learners will almost certainly trip over them again.</p></li>
+<li><p>If some learners are using Windows, there will inevitably be issues merging files with different line endings. (Even if everyone's on some flavor of Unix, different editors may or may not add a newline to the last line of a file.) Take a moment to explain these issues, since learners will almost certainly trip over them again. If learners are running into line ending problems, Github has a <a href="https://help.github.com/articles/dealing-with-line-endings/#platform-all">page</a> that helps with troubleshooting.</p></li>
 <li><p>We don't use a Git GUI in these notes because we haven't found one that installs easily and runs reliably on the three major operating systems, and because we want learners to understand what commands are being run. That said, instructors should demo a GUI on their desktop at some point during this lesson and point learners at <a href="http://git-scm.com/downloads/guis">this page</a>.</p></li>
 <li><p>Instructors should show learners graphical diff/merge tools like <a href="https://sourcegear.com/diffmerge/">DiffMerge</a>.</p></li>
 <li><p>When appropriate, explain that we teach Git rather than CVS, Subversion, or Mercurial primarily because of GitHub's growing popularity: CVS and Subversion are now seen as legacy systems, and Mercurial isn't nearly as widely used in the sciences right now.</p></li>
@@ -67,8 +67,8 @@
 <h2 id="creating-a-repository"><a href="02-create.html">Creating a Repository</a></h2>
 <p>The challenge &quot;Places to create repositories&quot; tries to reinforce the idea that the <code>.git</code> folder contains the whole Git repo and deleting this folder <em>undoes</em> a <code>git init</code>. It also gives the learner the way to fix the common mistake of putting unwanted folders (like <code>Desktop</code>) under version control.</p>
 <p>Instead of removing the <code>.git</code> folder directly, you can choose to move it first to a safer directory and remove it from there:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mv</span> .git temp_git
-<span class="kw">rm</span> -rf  temp_git</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mv</span> .git temp_git
+<span class="kw">rm</span> -rf  temp_git</code></pre></div>
 <h2 id="tracking-changes"><a href="03-changes.html">Tracking Changes</a></h2>
 <h2 id="exploring-history"><a href="04-history.html">Exploring History</a></h2>
 <ul>

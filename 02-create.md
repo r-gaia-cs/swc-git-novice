@@ -13,29 +13,31 @@ we can start using it.
 Let's create a directory for our work:
 
 ~~~ {.bash}
-$ mkdir planets
-$ cd planets
+mkdir planets
+~~~
+~~~ {.bash}
+cd planets
 ~~~
 
 and tell Git to make it a [repository](reference.html#repository)&mdash;a place where
 Git can store old versions of our files:
 
 ~~~ {.bash}
-$ git init
+git init
 ~~~
 
 If we use `ls` to show the directory's contents,
 it appears that nothing has changed:
 
 ~~~ {.bash}
-$ ls
+ls
 ~~~
 
 But if we add the `-a` flag to show everything,
 we can see that Git has created a hidden directory called `.git`:
 
 ~~~ {.bash}
-$ ls -a
+ls -a
 ~~~
 ~~~ {.output}
 .	..	.git
@@ -49,7 +51,7 @@ We can check that everything is set up correctly
 by asking Git to tell us the status of our project:
 
 ~~~ {.bash}
-$ git status
+git status
 ~~~
 ~~~ {.output}
 # On branch master
@@ -65,11 +67,23 @@ nothing to commit (create/copy files and use "git add" to track)
 > 
 > ~~~ {.bash}
 > cd           # return to home directory
+> ~~~
+> ~~~ {.bash}
 > mkdir alpha  # make a new directory alpha
+> ~~~
+> ~~~ {.bash}
 > cd alpha     # go into alpha
+> ~~~
+> ~~~ {.bash}
 > git init     # make the alpha directory a Git repository
+> ~~~
+> ~~~ {.bash}
 > mkdir beta   # make a sub-directory alpha/beta
+> ~~~
+> ~~~ {.bash}
 > cd beta      # go into alpha/beta
+> ~~~
+> ~~~ {.bash}
 > git init     # make the beta sub-directory a Git repository
 > ~~~
 > 

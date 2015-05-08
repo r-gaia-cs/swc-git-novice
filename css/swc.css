@@ -255,6 +255,10 @@ code {
     color: #333333;
 }
 
+code.bash::before {
+    content: "$ ";
+}
+
 /* Top banner of every page. */
 div.banner {
 	background-color: #FFFFFF;
